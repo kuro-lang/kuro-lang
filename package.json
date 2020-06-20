@@ -6,5 +6,8 @@
   "repository": "https://github.com/quro-framework/kuro-lang",
   "author": "hota1024",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "typescript": "^3.9.5"
+  }
 }
