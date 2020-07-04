@@ -35,5 +35,8 @@
     "testMatch": [
       "**/tests/**/*.test.ts"
     ]
+  },
+  "dependencies": {
+    "chalk": "^4.1.0"
   }
 }
