@@ -1,5 +1,6 @@
 export * from './LeftBraceToken'
 export * from './LeftBracketToken'
 export * from './LeftParenToken'
+export * from './RightBraceToken'
 export * from './RightBracketToken'
 export * from './RightParenToken'
