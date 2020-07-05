@@ -1,3 +1,4 @@
+export * from './CommaToken'
 export * from './DotToken'
 export * from './EqualsEqualsToken'
 export * from './ExclamationEqualsToken'
