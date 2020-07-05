@@ -3,4 +3,4 @@ import { TokenBase } from '../../TokenBase'
 /*
  * AsteriskToken type.
  */
-export type AsteriskToken = TokenBase<'asterisk', 'symbol'>
+export type AsteriskToken = TokenBase<'asterisk'>

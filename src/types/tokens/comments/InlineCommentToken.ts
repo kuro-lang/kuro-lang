@@ -3,4 +3,4 @@ import { TokenBase } from '../../TokenBase'
 /*
  * InlineCommentToken type.
  */
-export type InlineCommentToken = TokenBase<'inline_comment', 'comment'>
+export type InlineCommentToken = TokenBase<'inline_comment'>

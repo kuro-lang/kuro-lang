@@ -3,4 +3,4 @@ import { TokenBase } from '../../TokenBase'
 /*
  * ColonToken type.
  */
-export type ColonToken = TokenBase<'colon', 'symbol'>
+export type ColonToken = TokenBase<'colon'>

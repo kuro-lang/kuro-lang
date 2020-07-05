@@ -3,7 +3,7 @@ import { TokenBase } from './TokenBase'
 /*
  * LiteralTokenBase type.
  */
-export type LiteralTokenBase<K extends string, T> = TokenBase<K, 'literal'> & {
+export type LiteralTokenBase<K extends string> = TokenBase<K> & {
   /**
    * Value.
    */

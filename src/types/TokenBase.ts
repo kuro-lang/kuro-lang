@@ -1,19 +1,13 @@
-import { TokenType } from './TokenType'
 import { ILoc } from '../interfaces'
 
 /*
  * TokenBase type.
  */
-export type TokenBase<K extends string, T extends TokenType = 'other'> = {
+export type TokenBase<K extends string> = {
   /**
    * Kind.
    */
   kind: K
-
-  /**
-   * Type.
-   */
-  type: T
 
   /**
    * Location.

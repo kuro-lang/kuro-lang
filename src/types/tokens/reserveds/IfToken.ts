@@ -3,4 +3,4 @@ import { TokenBase } from '../../TokenBase'
 /*
  * IfToken type.
  */
-export type IfToken = TokenBase<'if', 'reserved'>
+export type IfToken = TokenBase<'if'>

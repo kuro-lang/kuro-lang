@@ -3,4 +3,4 @@ import { TokenBase } from '../../TokenBase'
 /*
  * MinusEqualsToken type.
  */
-export type MinusEqualsToken = TokenBase<'minus_equals', 'symbol'>
+export type MinusEqualsToken = TokenBase<'minus_equals'>

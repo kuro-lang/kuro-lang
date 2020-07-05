@@ -3,4 +3,4 @@ import { TokenBase } from '../../TokenBase'
 /*
  * ContinueToken type.
  */
-export type ContinueToken = TokenBase<'continue', 'reserved'>
+export type ContinueToken = TokenBase<'continue'>
