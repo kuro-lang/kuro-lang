@@ -1,5 +1,6 @@
 export * from './ColonToken'
 export * from './CommaToken'
+export * from './DotDotToken'
 export * from './DotToken'
 export * from './EqualsEqualsToken'
 export * from './ExclamationEqualsToken'
