@@ -107,8 +107,8 @@
   - `?`
 - dot_dot
   - `..`
-- dot_dot_dot
-  - `...`
+- ~~dot_dot_dot~~
+  - ~~`...`~~
 
 ## Reserved
 
