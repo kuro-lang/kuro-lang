@@ -1,5 +1,6 @@
 export * from './BreakToken'
 export * from './ConstToken'
+export * from './ContinueToken'
 export * from './ElseToken'
 export * from './IfToken'
 export * from './LetToken'
