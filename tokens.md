@@ -126,8 +126,8 @@
   - `continue`
 - loop
   - `loop`
-- do
-  - `do`
+- ~~do~~
+  - ~~`do`~~
 - while
   - `while`
 - for
