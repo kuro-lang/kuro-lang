@@ -4,3 +4,4 @@ export * from './reserveds'
 export * from './symbols'
 
 export * from './CommentToken'
+export * from './LiteralToken'
