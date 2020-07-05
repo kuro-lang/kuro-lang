@@ -1,6 +1,7 @@
 export * from './DotToken'
 export * from './EqualsEqualsToken'
 export * from './ExclamationEqualsToken'
+export * from './GreaterEqualsThanToken'
 export * from './GreaterThanToken'
 export * from './LeftBraceToken'
 export * from './LeftBracketToken'
