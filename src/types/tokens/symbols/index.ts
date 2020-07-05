@@ -1,3 +1,4 @@
+export * from './AsteriskToken'
 export * from './ColonToken'
 export * from './CommaToken'
 export * from './DotDotToken'
