@@ -1,3 +1,4 @@
+export * from './AsteriskAsteriskEqualsToken'
 export * from './AsteriskAsteriskToken'
 export * from './AsteriskEqualsToken'
 export * from './AsteriskToken'
