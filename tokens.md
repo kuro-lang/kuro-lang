@@ -34,8 +34,8 @@
 
 - dot
   - `.`
-- question_dot
-  - `?.`
+- ~~question_dot~~
+  - ~~`?.`~~
 
 ## Comparison
 
