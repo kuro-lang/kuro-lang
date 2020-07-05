@@ -112,8 +112,8 @@
 
 ## Reserved
 
-- var
-  - `var`
+- let
+  - `let`
 - const
   - `const`
 - if
