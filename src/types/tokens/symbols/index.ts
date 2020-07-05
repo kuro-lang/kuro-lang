@@ -1,3 +1,4 @@
+export * from './DotToken'
 export * from './LeftBraceToken'
 export * from './LeftBracketToken'
 export * from './LeftParenToken'
