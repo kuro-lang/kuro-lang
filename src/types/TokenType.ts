@@ -2,7 +2,9 @@
  * TokenType type.
  */
 export type TokenType =
-  | 'literal'
+  | 'numeric'
+  | 'string'
+  | 'boolean'
   | 'symbol'
   | 'identifier'
   | 'reserved'
