@@ -5,3 +5,4 @@ export * from './symbols'
 
 export * from './CommentToken'
 export * from './LiteralToken'
+export * from './ReservedToken'
