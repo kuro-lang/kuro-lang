@@ -1,4 +1,5 @@
 export * from './AsteriskAsteriskToken'
+export * from './AsteriskEqualsToken'
 export * from './AsteriskToken'
 export * from './ColonToken'
 export * from './CommaToken'
