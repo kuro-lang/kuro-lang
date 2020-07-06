@@ -1,4 +1,5 @@
 export * from './isCommentToken'
 export * from './isLiteralToken'
+export * from './isReservedToken'
 export * from './isTokenKind'
 export * from './useEquals'
