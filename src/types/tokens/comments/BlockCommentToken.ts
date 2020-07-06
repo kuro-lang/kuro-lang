@@ -1,6 +1,6 @@
-import { TokenBase } from '../../TokenBase'
+import { CommentTokenBase } from '../../CommentTokenBase'
 
 /*
  * BlockCommentToken type.
  */
-export type BlockCommentToken = TokenBase<'block_comment'>
+export type BlockCommentToken = CommentTokenBase<'block_comment'>

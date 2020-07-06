@@ -1,4 +1,5 @@
 export * from './tokens'
+export * from './CommentTokenBase'
 export * from './CommentTokenKind'
 export * from './LiteralTokenBase'
 export * from './LiteralTokenKind'
