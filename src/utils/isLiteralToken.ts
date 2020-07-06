@@ -11,7 +11,7 @@ const literalKinds: LiteralTokenKind[] = [
 ]
 
 /**
- * Returns whether token is a CommentToken.
+ * Returns whether token is a LiteralToken.
  *
  * @param token Token.
  */
