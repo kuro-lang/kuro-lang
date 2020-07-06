@@ -1,4 +1,4 @@
-import { Token, CommentToken, ReservedTokenKind } from '../types'
+import { Token, ReservedTokenKind, ReservedToken } from '../types'
 import { isTokenKind } from './isTokenKind'
 
 /**
@@ -23,6 +23,6 @@ const reservedKinds: ReservedTokenKind[] = [
  *
  * @param token Token.
  */
-export const isReservedToken = (token: Token): token is CommentToken => {
+export const isReservedToken = (token: Token): token is ReservedToken => {
   return isTokenKind(token, reservedKinds)
 }
