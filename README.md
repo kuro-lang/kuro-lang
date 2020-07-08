@@ -16,4 +16,4 @@ The Kuro language will be available on the following platforms.(🌴 means tree-
 ## Features
 
 - Output lexes of the source code.
-- Output ASt of the lexes or source code.
+- Output AST of the lexes or source code.
