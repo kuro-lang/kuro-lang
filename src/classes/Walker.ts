@@ -37,7 +37,7 @@ export class Walker<T> implements IWalker<T> {
    * @param initialIndex Initial index.
    */
   constructor(values: T[] | Iterable<T>, initialIndex = 0) {
-    this.mValues = Array.isArray(values) ? values : Array.from(values)
+    this.mValues = [...values]
     this.mIndex = initialIndex
   }
 
