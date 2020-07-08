@@ -1,4 +1,9 @@
+# Node.js
 node_modules
-lib
+
+# Testing
 coverage
+
+# TypeScript
+/lib
 /types
