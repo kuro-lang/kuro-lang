@@ -11,6 +11,7 @@
     "build": "tsc",
     "dev": "tsc -w",
     "test": "jest --coverage",
+    "coverage:open": "jest --coverage && open-cli coverage/lcov-report/index.html",
     "test:watch": "jest --watchAll --coverage"
   },
   "devDependencies": {
