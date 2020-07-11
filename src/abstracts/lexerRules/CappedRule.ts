@@ -1,5 +1,6 @@
-import { ILexerRule, IWalker } from '../../interfaces'
+import { ILexerRule, IWalker, ILoc } from '../../interfaces'
 import { Token } from '../../types'
+import { LocatedError } from '../../impls'
 
 /*
  * Cap type.
@@ -47,7 +48,7 @@ export abstract class CappedRule<T extends Token> implements ILexerRule {
 
     while (!walker.match(cap.end)) {
       if (walker.done()) {
-        throw new Error('')
+        throw this.createUnterminatedError(walker.locFrom(start))
       }
       walker.next()
     }
@@ -58,7 +59,7 @@ export abstract class CappedRule<T extends Token> implements ILexerRule {
       .slice(commentStart, walker.index() - cap.end.length)
       .join('')
 
-    return this.makeToken(body)
+    return this.createToken(body, walker.locFrom(start))
   }
 
   /**
@@ -71,9 +72,17 @@ export abstract class CappedRule<T extends Token> implements ILexerRule {
   }
 
   /**
-   * Make a token by body string and returns it.
+   * Returns a token by body string and returns it.
    *
    * @param body Body string.
+   * @param loc Token location.
    */
-  abstract makeToken(body: string): T
+  abstract createToken(body: string, loc: ILoc): T
+
+  /**
+   * Returns an unterminated error.
+   *
+   * @param loc Error location.
+   */
+  abstract createUnterminatedError(loc: ILoc): LocatedError
 }
