@@ -22,6 +22,12 @@ export class StringLiteralRule extends CappedRule<StringLiteralToken> {
         allowNewLines: false,
         allowEscapes: true,
       },
+      {
+        start: "'",
+        end: "'",
+        allowNewLines: false,
+        allowEscapes: true,
+      },
     ])
   }
 
