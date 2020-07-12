@@ -19,6 +19,8 @@ export class BlockCommentRule extends CappedRule<BlockCommentToken> {
       {
         start: '/*',
         end: '*/',
+        allowNewLines: true,
+        allowEscapes: false,
       },
     ])
   }

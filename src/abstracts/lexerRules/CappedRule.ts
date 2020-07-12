@@ -1,6 +1,7 @@
 import { ILexerRule, IWalker, ILoc } from '../../interfaces'
 import { Token } from '../../types'
 import { LocatedError } from '../../impls'
+import { useEquals } from '../../utils'
 
 /*
  * Cap type.
@@ -15,6 +16,16 @@ export type Cap = {
    * End cap.
    */
   end: string
+
+  /**
+   * Whether allow new lines.
+   */
+  allowNewLines: boolean
+
+  /**
+   * Whether allow escapes.
+   */
+  allowEscapes: boolean
 }
 
 /*
@@ -25,6 +36,11 @@ export abstract class CappedRule<T extends Token> implements ILexerRule {
    * Caps.
    */
   readonly caps: Cap[] = []
+
+  /**
+   * Escape chars.
+   */
+  readonly escapes = ['\\']
 
   /**
    * CappedRule constructor.
@@ -42,22 +58,27 @@ export abstract class CappedRule<T extends Token> implements ILexerRule {
   execute(walker: IWalker<string>): T {
     const cap = this.getCap(walker)
     const start = walker.index()
-    const commentStart = start + cap.start.length
+
+    let escape = false
+    let body = ''
 
     walker.next(cap.start.length)
 
-    while (!walker.match(cap.end)) {
-      if (walker.done()) {
+    while (true as const) {
+      if (walker.done() || (walker.value() === '\n' && !cap.allowNewLines)) {
         throw this.createUnterminatedError(walker.locFrom(start))
+      } else if (walker.match(cap.end) && !escape) {
+        walker.next(cap.end.length)
+        break
+      } else if (cap.allowEscapes && this.isEscape(walker.value())) {
+        escape = !escape
+      } else {
+        body += walker.value()
+        escape = false
       }
+
       walker.next()
     }
-
-    walker.next(cap.end.length)
-
-    const body = walker
-      .slice(commentStart, walker.index() - cap.end.length)
-      .join('')
 
     return this.createToken(body, walker.locFrom(start))
   }
@@ -69,6 +90,15 @@ export abstract class CappedRule<T extends Token> implements ILexerRule {
    */
   protected getCap(walker: IWalker<string>): Cap {
     return this.caps.find((cap) => walker.match(cap.start))
+  }
+
+  /**
+   * Returns whether char is a escape cahr.
+   *
+   * @param char Char.
+   */
+  protected isEscape(char: string): boolean {
+    return !!this.escapes.find(useEquals(char))
   }
 
   /**
