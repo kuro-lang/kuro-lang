@@ -6,7 +6,9 @@
 
 ## 📝 Details
 
-The Kuro language is a general-purpose programming language designed and developed with the goal of platform liberalization in mind.
+Kuro is a programming language with a safe, general syntax that can be embedded in a variety of platforms.
+
+## 💻 Platforms
 
 The Kuro language will be available on the following platforms.(🌴 means tree-walk interpreter)
 
