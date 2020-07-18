@@ -10,10 +10,12 @@ Kuro is a programming language with a safe, general syntax that can be embedded 
 
 ## 💻 Platforms
 
-The Kuro language will be available on the following platforms.(🌴 means tree-walk interpreter)
+The Kuro language will be available on the following platforms.(🌴 is tree-walk interpreter. ↪️ is transpiler.)
 
-- 🌴Node.js
-- 🌴Browser JS
+- [] 🌴Node.js
+- [] 🌴Browser JS
+- [] ↪️Kuro to JS
+- [] 💻Kuro VM
 
 ## 🚀 Features
 
