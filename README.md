@@ -19,3 +19,24 @@ The Kuro language will be available on the following platforms.(🌴 means tree-
 
 - Output lexes of the source code.
 - Output AST of the lexes or source code.
+
+## ⭐️ Example Syntax
+
+(using rust highlight syntax)
+
+```rust
+use io
+
+fn tax(tax, price) {
+  price * tax
+}
+
+fn suffix(suffix, value) {
+  value + suffix // join value and suffix and returns it.
+}
+
+const yen = suffix("yen")
+const tax10 = tax(10)
+
+io.readLine() -> parseInt -> tax10 -> yen -> io.println
+```
