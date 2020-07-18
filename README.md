@@ -4,7 +4,7 @@
 <p align="center">Generic programming language and environment written in TypeScript.</p>
 <div align="center"></div>
 
-## Details
+## 📝 Details
 
 The Kuro language is a general-purpose programming language designed and developed with the goal of platform liberalization in mind.
 
@@ -13,7 +13,7 @@ The Kuro language will be available on the following platforms.(🌴 means tree-
 - 🌴Node.js
 - 🌴Browser JS
 
-## Features
+## 🚀 Features
 
 - Output lexes of the source code.
 - Output AST of the lexes or source code.
