@@ -28,7 +28,7 @@ The Kuro language will be available on the following platforms.(🌴 means tree-
 use io
 
 fn tax(tax, price) {
-  price * tax
+  price + price * (tax / 100)
 }
 
 fn suffix(suffix, value) {
@@ -38,5 +38,5 @@ fn suffix(suffix, value) {
 const yen = suffix("yen") // create yen function that returns join given value and "yen".
 const tax10 = tax(10)     // create tax10 function that returns amount of the 10% sales tax applied.
 
-1799 -> parseInt -> tax10 -> yen -> io.println // 1980
+1000 -> tax10 -> yen -> io.println // 1100
 ```
