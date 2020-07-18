@@ -35,8 +35,8 @@ fn suffix(suffix, value) {
   value + suffix // join value and suffix and returns it.
 }
 
-const yen = suffix("yen")
-const tax10 = tax(10)
+const yen = suffix("yen") // create yen function that returns join given value and "yen".
+const tax10 = tax(10)     // create tax10 function that returns amount of the 10% sales tax applied.
 
 io.readLine() -> parseInt -> tax10 -> yen -> io.println
 ```
