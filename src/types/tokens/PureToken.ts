@@ -3,4 +3,4 @@ import { SymbolToken, ReservedToken } from '.'
 /*
  * PureToken type.
  */
-export type PureToken = ReservedToken & SymbolToken
+export type PureToken = ReservedToken | SymbolToken
