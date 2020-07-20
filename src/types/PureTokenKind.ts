@@ -1,7 +1,6 @@
-import { ReservedTokenKind } from './ReservedTokenKind'
-import { SymbolTokenKind } from './SymbolTokenKind'
+import { PureToken } from './tokens'
 
 /*
  * PureTokenKind type.
  */
-export type PureTokenKind = ReservedTokenKind | SymbolTokenKind
+export type PureTokenKind = PureToken['kind']
