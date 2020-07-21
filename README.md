@@ -26,6 +26,8 @@ The Kuro language will be available on the following platforms.(🌴 is tree-wal
 
 (using rust highlight syntax)
 
+### Tax calculation
+
 ```rust
 use io
 
@@ -41,4 +43,22 @@ const yen = suffix("yen") // create yen function that returns join given value a
 const tax10 = tax(10)     // create tax10 function that returns amount of the 10% sales tax applied.
 
 1000 -> tax10 -> yen -> println // 1100
+```
+
+### Browser & Fetch API
+
+```rust
+use "browser" * // expand all fields of "browser" module.
+
+const url = "https://jsonplaceholder.typicode.com/todos/1"
+
+fn format(object) {
+  JSON.stringify(json, undefined, 2)
+}
+
+const pre = document.createElement("pre")
+
+pre.innerHTML = url -> fetch -> await -> json -> await -> format
+
+pre -> document.body.appendChild
 ```
