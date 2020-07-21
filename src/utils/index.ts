@@ -1,3 +1,4 @@
+export * from './indexed'
 export * from './isCommentToken'
 export * from './isIdentifierToken'
 export * from './isLiteralToken'
