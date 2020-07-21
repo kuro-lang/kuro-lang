@@ -93,7 +93,7 @@ export class Lexer extends Walker<string> implements ILexer {
       }
     }
 
-    const token = this.value() || ''
+    const token = this.value()
     this.next()
 
     return token
