@@ -1,18 +1,10 @@
-import { Walker, Lexer } from '../../src/classes'
+import { Lexer } from '../../src/classes'
 
 describe('Lexer test', () => {
-  test('should set walker', () => {
-    const walker = new Walker('')
-    const lexer = new Lexer(walker)
-
-    expect(lexer.walker).toBe(walker)
-  })
-
   test('should return next token', () => {
-    const walker = new Walker('10 + 20\n')
-    const lexer = new Lexer(walker)
+    const lexer = new Lexer('10 + 20\n')
 
-    expect(lexer.next()).toMatchObject({
+    expect(lexer.nextToken()).toMatchObject({
       kind: 'numeric_literal',
       value: 10,
       loc: {
@@ -20,16 +12,16 @@ describe('Lexer test', () => {
         end: 2,
       },
     })
-    expect(lexer.next()).toBe(' ')
-    expect(lexer.next()).toMatchObject({
+    expect(lexer.nextToken()).toBe(' ')
+    expect(lexer.nextToken()).toMatchObject({
       kind: 'plus',
       loc: {
         start: 3,
         end: 4,
       },
     })
-    expect(lexer.next()).toBe(' ')
-    expect(lexer.next()).toMatchObject({
+    expect(lexer.nextToken()).toBe(' ')
+    expect(lexer.nextToken()).toMatchObject({
       kind: 'numeric_literal',
       value: 20,
       loc: {
@@ -40,11 +32,10 @@ describe('Lexer test', () => {
   })
 
   test('should returns whether anlyzing is done', () => {
-    const walker = new Walker('10')
-    const lexer = new Lexer(walker)
+    const lexer = new Lexer('10')
 
     expect(lexer.done()).toBeFalsy()
-    lexer.next()
+    lexer.nextToken()
     expect(lexer.done()).toBeTruthy()
   })
 })
