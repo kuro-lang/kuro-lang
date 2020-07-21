@@ -1,4 +1,4 @@
-import { IWalker, ILexerRule, ILexer } from '../interfaces'
+import { ILexerRule, ILexer } from '../interfaces'
 import {
   BlockCommentRule,
   InlineCommentRule,
@@ -9,16 +9,12 @@ import {
   PatternRule,
 } from '../impls'
 import { Token } from '../types'
+import { Walker } from './Walker'
 
 /*
  * Lexer class.
  */
-export class Lexer implements ILexer {
-  /**
-   * String walker.
-   */
-  readonly walker: IWalker<string>
-
+export class Lexer extends Walker<string> implements ILexer {
   /**
    * Rules.
    */
@@ -82,26 +78,22 @@ export class Lexer implements ILexer {
   /**
    * Lexer constructor.
    *
-   * @param walker String walker.
+   * @param source Source code.
    */
-  constructor(walker: IWalker<string>) {
-    this.walker = walker
+  constructor(source: string) {
+    super(source)
   }
 
-  next(): Token | string {
+  nextToken(): Token | string {
     for (const rule of this.rules) {
-      if (rule.validate(this.walker)) {
-        return rule.execute(this.walker)
+      if (rule.validate(this)) {
+        return rule.execute(this)
       }
     }
 
-    const token = this.walker.value() || ''
-    this.walker.next()
+    const token = this.value() || ''
+    this.next()
 
     return token
-  }
-
-  done(): boolean {
-    return this.walker.done()
   }
 }

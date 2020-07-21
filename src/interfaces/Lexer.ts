@@ -1,16 +1,12 @@
 import { Token } from '../types'
+import { IWalker } from './Walker'
 
 /*
  * Lexer interface.
  */
-export interface ILexer {
+export interface ILexer extends IWalker<string> {
   /**
-   * Returns next token or string.
+   * Returns next token.
    */
-  next(): Token | string
-
-  /**
-   * Returns whether analyzing is done.
-   */
-  done(): boolean
+  nextToken(): string | Token
 }
