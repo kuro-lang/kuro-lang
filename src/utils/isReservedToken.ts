@@ -15,6 +15,7 @@ const reservedKinds: ReservedTokenKind[] = [
   'in',
   'let',
   'loop',
+  'use',
   'while',
 ]
 
