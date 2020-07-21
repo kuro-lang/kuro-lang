@@ -31,16 +31,21 @@ import {
   RightParenToken,
   SlashEqualsToken,
   SlashToken,
+  AndAndToken,
+  BarBarToken,
+  ExclamationToken,
 } from './symbols'
 
 /*
  * SymbolToken type.
  */
 export type SymbolToken =
+  | AndAndToken
   | AsteriskAsteriskEqualsToken
   | AsteriskAsteriskToken
   | AsteriskEqualsToken
   | AsteriskToken
+  | BarBarToken
   | ColonToken
   | CommaToken
   | DotDotToken
@@ -48,6 +53,7 @@ export type SymbolToken =
   | EqualsEqualsToken
   | EqualsToken
   | ExclamationEqualsToken
+  | ExclamationToken
   | GreaterEqualsThanToken
   | GreaterThanToken
   | LeftBraceToken
