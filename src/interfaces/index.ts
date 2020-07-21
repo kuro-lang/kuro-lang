@@ -1,3 +1,4 @@
+export * from './Highlighter'
 export * from './Lexer'
 export * from './LexerRule'
 export * from './Loc'
