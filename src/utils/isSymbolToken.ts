@@ -5,10 +5,12 @@ import { isTokenKind } from './isTokenKind'
  * Symbol tokens kinds array.
  */
 const symbolKinds: SymbolTokenKind[] = [
+  'and_and',
   'asterisk',
   'asterisk_asterisk',
   'asterisk_asterisk_equals',
   'asterisk_equals',
+  'bar_bar',
   'colon',
   'comma',
   'dot',
@@ -16,6 +18,7 @@ const symbolKinds: SymbolTokenKind[] = [
   'equals',
   'equals_equals',
   'exclamation_equals',
+  'exclamation',
   'greater_equals_than',
   'greater_than',
   'left_brace',
