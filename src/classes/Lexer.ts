@@ -95,7 +95,10 @@ export class Lexer implements ILexer {
       }
     }
 
-    return this.walker.next() || ''
+    const token = this.walker.value() || ''
+    this.walker.next()
+
+    return token
   }
 
   done(): boolean {
