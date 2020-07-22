@@ -34,6 +34,7 @@ import {
   AndAndToken,
   BarBarToken,
   ExclamationToken,
+  MinusGreaterThanToken,
 } from './symbols'
 
 /*
@@ -62,6 +63,7 @@ export type SymbolToken =
   | LessEqualsThanToken
   | LessThanToken
   | MinusEqualsToken
+  | MinusGreaterThanToken
   | MinusMinusToken
   | MinusToken
   | PercentEqualsToken
