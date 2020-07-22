@@ -9,5 +9,5 @@ export interface IHighlighter {
    *
    * @param lexer lexer.
    */
-  highlight(lexer: ILexer): string
+  highlight(lexer: ILexer): void
 }

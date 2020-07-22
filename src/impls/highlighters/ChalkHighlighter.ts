@@ -90,7 +90,7 @@ export class ChalkHighlighter implements IHighlighter {
     }
   }
 
-  highlight(lexer: ILexer): string {
+  highlight(lexer: ILexer): void {
     let result = ''
 
     while (!lexer.done()) {
@@ -99,7 +99,8 @@ export class ChalkHighlighter implements IHighlighter {
       result += this.highlightToken(token, lexer)
     }
 
-    return this.lined(result)
+    const highlighted = this.lined(result)
+    console.log(highlighted)
   }
 
   /**
