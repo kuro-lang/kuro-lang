@@ -59,6 +59,7 @@ export class Lexer extends Walker<string> implements ILexer {
       make('loop', 'loop'),
       make('-', 'minus'),
       make('-=', 'minus_equals'),
+      make('->', 'minus_greater_than'),
       make('--', 'minus_minus'),
       make('%', 'percent'),
       make('%=', 'percent_equals'),
