@@ -28,6 +28,7 @@ const symbolKinds: SymbolTokenKind[] = [
   'less_than',
   'minus',
   'minus_equals',
+  'minus_greater_than',
   'minus_minus',
   'percent',
   'percent_equals',
