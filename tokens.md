@@ -109,6 +109,8 @@
   - `..`
 - ~~dot_dot_dot~~
   - ~~`...`~~
+- minus_greater_than
+  - `->`
 
 ## Reserved
 
