@@ -1,6 +1,5 @@
 import chalk from 'chalk'
 import { IHighlighter, ILexer } from '../..'
-import { Lexer } from '../../classes'
 import {
   Token,
   LiteralToken,
@@ -8,6 +7,7 @@ import {
   IdentifierToken,
   ReservedToken,
   SymbolToken,
+  SourceCode,
 } from '../../types'
 import {
   isLiteralToken,
@@ -90,7 +90,7 @@ export class ChalkHighlighter implements IHighlighter {
     }
   }
 
-  highlight(lexer: ILexer): void {
+  highlight(source: SourceCode, lexer: ILexer): void {
     let result = ''
 
     while (!lexer.done()) {
@@ -99,30 +99,41 @@ export class ChalkHighlighter implements IHighlighter {
       result += this.highlightToken(token, lexer)
     }
 
-    const highlighted = this.lined(result)
-    console.log(highlighted)
-  }
+    const lines = result.split('\n')
+    const rawLines = source.code.split('\n')
+    const lastLineLength = lines.length.toString().length
+    let maxLineLength = -Infinity
 
-  /**
-   * Returns lined code.
-   *
-   * @param code code.
-   */
-  protected lined(code: string): string {
-    const lines = code.split(/\n/g)
-    let result = ''
+    for (const [i, line] of indexed(lines)) {
+      const num = `${i + 1}`
+      const lineHead = ` ${' '.repeat(lastLineLength - num.length)}${num} │ `
 
-    for (const [index, line] of indexed(lines)) {
-      const num = (index + 1).toString()
-      const numPad = ' '.repeat(lines.length.toString().length - num.length)
-      const noindent = line.trim()
-      const indent = this.palette
-        .indent('•')
-        .repeat(line.length - noindent.length)
-      result += ` ${numPad}${num} │ ${indent}${noindent}\n`
+      if (`${lineHead}${rawLines[i]}`.length > maxLineLength) {
+        maxLineLength = `${lineHead}${rawLines[i]}`.length
+      }
+
+      lines[i] = `${chalk.grey(lineHead)}${line}`
     }
 
-    return result
+    console.log(
+      chalk.grey(
+        '─'.repeat(lastLineLength + 2) +
+          '┬' +
+          '─'.repeat(maxLineLength - lastLineLength - 3)
+      )
+    )
+    console.log(
+      chalk.grey(' '.repeat(lastLineLength + 2) + '│ File: ') +
+        `${chalk.bold(source.filename ?? chalk.grey('no file'))}`
+    )
+    console.log(
+      chalk.grey(
+        '─'.repeat(lastLineLength + 2) +
+          '┼' +
+          '─'.repeat(maxLineLength - lastLineLength - 3)
+      )
+    )
+    console.log(lines.join('\n'))
   }
 
   /**
