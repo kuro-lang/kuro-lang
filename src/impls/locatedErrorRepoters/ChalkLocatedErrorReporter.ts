@@ -58,7 +58,7 @@ export class ChalkLocatedErrorReporter implements ILocatedErrorReporter {
     )
     console.log(
       chalk.grey(' '.repeat(head.length - 2) + '│ File: ') +
-        chalk.bold(filename)
+        chalk.bold(filename ?? chalk.grey('no file'))
     )
     console.log(
       chalk.grey(
@@ -70,23 +70,4 @@ export class ChalkLocatedErrorReporter implements ILocatedErrorReporter {
     console.log(`${chalk.grey(head)}${previous}${chalk.red(body)}${next}`)
     console.log(`${chalk.red(errorRange)}${chalk.bgRed.white(spacedMessage)}`)
   }
-}
-
-const code = `100 "Hello world ddd`
-try {
-  console.log(`code: ${code}\n`)
-
-  const lexer = new Lexer(code)
-  while (!lexer.done()) {
-    lexer.nextToken()
-  }
-} catch (error) {
-  if (error instanceof LocatedError) {
-    new ChalkLocatedErrorReporter().report(
-      { code, filename: 'test.kuro' },
-      error
-    )
-  }
-
-  throw error
 }
