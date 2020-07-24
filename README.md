@@ -62,3 +62,8 @@ pre.innerHTML = url -> fetch -> await -> json -> await -> format
 
 pre -> document.body.appendChild
 ```
+
+## 🔧 Specifications
+
+- [specifications.md](./specifications.md)
+- [tokens.md](./tokens.md)
