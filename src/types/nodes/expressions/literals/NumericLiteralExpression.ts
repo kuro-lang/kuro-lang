@@ -1,4 +1,4 @@
-import { LiteralNodeBase } from '../..'
+import { LiteralNodeBase } from '../../..'
 
 /**
  * NumericLiteralExpression type.

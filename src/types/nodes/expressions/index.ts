@@ -1,1 +1,3 @@
-export * from './NumericLiteralExpression'
+export * from './literals'
+
+export * from './LiteralExpression'

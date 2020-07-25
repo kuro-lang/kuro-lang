@@ -1,6 +1,6 @@
-import { NumericLiteralExpression } from '.'
+import { LiteralExpression } from './expressions'
 
 /**
  * Expression type.
  */
-export type Expression = NumericLiteralExpression
+export type Expression = LiteralExpression
