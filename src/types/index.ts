@@ -1,3 +1,4 @@
+export * from './nodes'
 export * from './tokens'
 export * from './CommentTokenBase'
 export * from './CommentTokenKind'
