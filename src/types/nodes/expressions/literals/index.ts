@@ -1,4 +1,5 @@
 export * from './ArrayLiteralExpression'
 export * from './BooleanLiteralExpression'
 export * from './NumericLiteralExpression'
+export * from './ObjectLiteralExpression'
 export * from './StringLiteralExpression'
