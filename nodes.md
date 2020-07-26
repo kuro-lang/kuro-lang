@@ -52,6 +52,9 @@
 
 ## Statement
 
+- `block_statement`
+  - `{ <statement | expression> }`
+  - `{ println("Hello world") }`
 - `variable_declaration_statement`
   - `<let | const> <identifier> = <expression>`
   - `let msg = "Hello world"`
