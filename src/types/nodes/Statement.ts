@@ -1,6 +1,6 @@
-import { VariableDeclarationStatement } from './statements'
+import { VariableDeclarationStatement, BlockStatemenet } from './statements'
 
 /**
  * Statement type.
  */
-export type Statement = VariableDeclarationStatement
+export type Statement = BlockStatemenet | VariableDeclarationStatement
