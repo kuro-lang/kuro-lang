@@ -61,3 +61,11 @@
   - `break 10`
 - `continue_statement`
   - `continue`
+
+## Others
+
+- `identifier`
+  - `<identifier>`
+  - `hoge`
+- `property_assignment`
+  - `<identifier>: <expression>`
