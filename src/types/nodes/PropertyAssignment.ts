@@ -1,6 +1,6 @@
 import { NodeBase } from '..'
 import { Identifier } from './Identifier'
-import { Expression } from './ExpressionNode'
+import { Expression } from './Expression'
 
 /**
  * PropertyAssignemnt type.

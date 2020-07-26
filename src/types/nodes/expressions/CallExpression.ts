@@ -1,5 +1,5 @@
 import { NodeBase } from '../..'
-import { Expression } from '../ExpressionNode'
+import { Expression } from '../Expression'
 
 /**
  * CallExpression type.

@@ -1,6 +1,6 @@
 import { NodeBase } from '../..'
 import { Token } from '../../Token'
-import { Expression } from '../ExpressionNode'
+import { Expression } from '../Expression'
 
 /**
  * BinaryExpression type.
