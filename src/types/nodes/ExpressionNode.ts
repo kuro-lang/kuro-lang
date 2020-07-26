@@ -1,6 +1,13 @@
-import { LiteralExpression, PropertyAccessExpression } from './expressions'
+import {
+  LiteralExpression,
+  PropertyAccessExpression,
+  ElementAccessExpression,
+} from './expressions'
 
 /**
  * Expression type.
  */
-export type Expression = LiteralExpression | PropertyAccessExpression
+export type Expression =
+  | ElementAccessExpression
+  | LiteralExpression
+  | PropertyAccessExpression
