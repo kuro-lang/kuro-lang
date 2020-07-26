@@ -1,10 +1,11 @@
-import { LiteralNodeBase } from '../../..'
-import { Expression } from '../../ExpressionNode'
+import { LiteralNodeBase, Expression } from '../../..'
 
 /**
  * ArrayLiteralExpression type.
  */
 export type ArrayLiteralExpression = LiteralNodeBase<
   'array_literal_expression',
-  Expression[]
+  {
+    elements: Expression[]
+  }
 >
