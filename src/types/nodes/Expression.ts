@@ -4,6 +4,7 @@ import {
   ElementAccessExpression,
   CallExpression,
   BinaryExpression,
+  IfExpression,
 } from './expressions'
 
 /**
@@ -13,5 +14,6 @@ export type Expression =
   | BinaryExpression
   | CallExpression
   | ElementAccessExpression
+  | IfExpression
   | LiteralExpression
   | PropertyAccessExpression
