@@ -3,6 +3,7 @@ import {
   StringLiteralExpression,
   BooleanLiteralExpression,
   ArrayLiteralExpression,
+  ObjectLiteralExpression,
 } from './literals'
 
 /**
@@ -12,4 +13,5 @@ export type LiteralExpression =
   | ArrayLiteralExpression
   | BooleanLiteralExpression
   | NumericLiteralExpression
+  | ObjectLiteralExpression
   | StringLiteralExpression
