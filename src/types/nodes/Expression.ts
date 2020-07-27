@@ -8,6 +8,7 @@ import {
   LoopExpression,
   PrefixUnaryExpression,
   PostfixUnaryExpression,
+  WhileExpression,
 } from './expressions'
 
 /**
@@ -23,3 +24,4 @@ export type Expression =
   | PropertyAccessExpression
   | PrefixUnaryExpression
   | PostfixUnaryExpression
+  | WhileExpression
