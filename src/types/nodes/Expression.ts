@@ -7,6 +7,7 @@ import {
   IfExpression,
   LoopExpression,
   PrefixUnaryExpression,
+  PostfixUnaryExpression,
 } from './expressions'
 
 /**
@@ -21,3 +22,4 @@ export type Expression =
   | LoopExpression
   | PropertyAccessExpression
   | PrefixUnaryExpression
+  | PostfixUnaryExpression
