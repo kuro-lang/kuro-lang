@@ -9,6 +9,7 @@ import {
   PrefixUnaryExpression,
   PostfixUnaryExpression,
   WhileExpression,
+  ForExpression,
 } from './expressions'
 
 /**
@@ -18,6 +19,7 @@ export type Expression =
   | BinaryExpression
   | CallExpression
   | ElementAccessExpression
+  | ForExpression
   | IfExpression
   | LiteralExpression
   | LoopExpression
