@@ -74,6 +74,7 @@ export class Lexer extends Walker<string> implements ILexer {
       make('/=', 'slash_equals'),
       make('use', 'use'),
       make('while', 'while'),
+      make('\n', 'new_line'),
     ]),
     new IdentifierRule(),
   ]
