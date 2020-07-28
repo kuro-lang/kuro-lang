@@ -20,14 +20,20 @@ export class NumericLiteralRule implements ILexerRule {
         this.isDecimalPointChar(walker.value()))
     ) {
       if (this.isDecimalPointChar(walker.value())) {
+        const peek = walker.peek()
+
+        if (peek && this.isDecimalPointChar(peek)) {
+          break
+        }
+
         if (hasDecimalPoint) {
           throw new UnexpectedTokenError(
             `unexpected token '${walker.value()}'`,
             walker.locTo(walker.index() + 1)
           )
-        } else {
-          hasDecimalPoint = true
         }
+
+        hasDecimalPoint = true
       }
 
       walker.next()
