@@ -102,7 +102,8 @@ export class ChalkHighlighter implements IHighlighter {
     const lines = result.split('\n')
     const rawLines = source.code.split('\n')
     const lastLineLength = lines.length.toString().length
-    let maxLineLength = -Infinity
+    let maxLineLength =
+      lastLineLength + 2 + `| File: ${source.filename ?? 'no file'}`.length
 
     for (const [i, line] of indexed(lines)) {
       const num = `${i + 1}`
@@ -219,18 +220,18 @@ export class ChalkHighlighter implements IHighlighter {
    * @param lexer Lexer.
    */
   protected highlightLiteralToken(token: LiteralToken, lexer: ILexer): string {
+    const text = token.loc.slice(lexer).join('')
+
     if (token.kind === 'boolean_literal') {
-      return this.palette.boolean(token.value)
+      return this.palette.boolean(text)
     }
 
     if (token.kind === 'numeric_literal') {
-      return this.palette.numeric(token.value)
+      return this.palette.numeric(text)
     }
 
     if (token.kind === 'string_literal') {
-      return this.palette.string(
-        lexer.slice(token.loc.start, token.loc.end).join('')
-      )
+      return this.palette.string(text)
     }
   }
 
