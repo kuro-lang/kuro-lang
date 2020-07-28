@@ -45,7 +45,7 @@ export class ChalkLocatedErrorReporter implements ILocatedErrorReporter {
       ' '.repeat(head.length + previous.length - head.length)
     const bodyRange = '─'.repeat(body.length - 2)
     const errorRange = `${spacingToBody}╰${bodyRange}┴───`
-    const spacedMessage = ` Error: ${message} `
+    const spacedMessage = ` Error(${loc.start}~${loc.end}): ${message}`
 
     const errorLine = `${errorRange}${spacedMessage}`
 
@@ -69,5 +69,9 @@ export class ChalkLocatedErrorReporter implements ILocatedErrorReporter {
     )
     console.log(`${chalk.grey(head)}${previous}${chalk.red(body)}${next}`)
     console.log(`${chalk.red(errorRange)}${chalk.bgRed.white(spacedMessage)}`)
+
+    if (error.stack) {
+      console.error(error.stack)
+    }
   }
 }
