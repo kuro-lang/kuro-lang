@@ -1,14 +1,13 @@
-import { ILexer } from './Lexer'
-import { Node } from '../types'
+import { Node, TokenWalker } from '../types'
 
 /**
  * Parser interface.
  */
 export interface IParser<T extends Node> {
   /**
-   * Parse code of lexer. And returns AST Node.
+   * Parse token of walker. And returns AST node object.
    *
-   * @param lexer Lexer.
+   * @param walker TokenWalker.
    */
-  parse(lexer: ILexer): T
+  parse(walker: TokenWalker): T
 }
