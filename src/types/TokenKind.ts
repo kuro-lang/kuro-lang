@@ -1,13 +1,6 @@
-import { CommentTokenKind } from './CommentTokenKind'
-import { LiteralTokenKind } from './LiteralTokenKind'
-import { ReservedTokenKind } from './ReservedTokenKind'
-import { SymbolTokenKind } from './SymbolTokenKind'
+import { Token } from './Token'
 
 /*
  * TokenKind type.
  */
-export type TokenKind =
-  | CommentTokenKind
-  | LiteralTokenKind
-  | ReservedTokenKind
-  | SymbolTokenKind
+export type TokenKind = Token['kind']
