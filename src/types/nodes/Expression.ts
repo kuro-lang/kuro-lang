@@ -10,6 +10,7 @@ import {
   PostfixUnaryExpression,
   WhileExpression,
   ForExpression,
+  FunctionExpression,
 } from './expressions'
 
 /**
@@ -20,6 +21,7 @@ export type Expression =
   | CallExpression
   | ElementAccessExpression
   | ForExpression
+  | FunctionExpression
   | IfExpression
   | LiteralExpression
   | LoopExpression
