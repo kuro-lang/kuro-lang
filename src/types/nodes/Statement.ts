@@ -3,6 +3,7 @@ import {
   BlockStatemenet,
   BreakStatement,
   ContinueStatement,
+  ExpressionStatement,
 } from './statements'
 
 /**
@@ -12,4 +13,5 @@ export type Statement =
   | BlockStatemenet
   | BreakStatement
   | ContinueStatement
+  | ExpressionStatement
   | VariableDeclarationStatement
