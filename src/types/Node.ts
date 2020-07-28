@@ -1,6 +1,6 @@
-import { Expression } from '.'
+import { Expression, Statement } from '.'
 
 /**
  * AST Node type.
  */
-export type Node = Expression
+export type Node = Expression | Statement
