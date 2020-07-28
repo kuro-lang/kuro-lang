@@ -4,6 +4,7 @@ import {
   ReservedToken,
   SymbolToken,
   IdentifierToken,
+  NewLineToken,
 } from './tokens'
 
 /*
@@ -13,5 +14,6 @@ export type Token =
   | CommentToken
   | IdentifierToken
   | LiteralToken
+  | NewLineToken
   | ReservedToken
   | SymbolToken
