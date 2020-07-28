@@ -147,6 +147,10 @@ export class ChalkHighlighter implements IHighlighter {
       return this.highlightTokenString(token)
     }
 
+    if (token.kind === 'new_line') {
+      return `\n`
+    }
+
     return this.highlightRawToken(token, lexer)
   }
 
