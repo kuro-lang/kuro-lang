@@ -9,7 +9,9 @@
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "./types",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     "src",
