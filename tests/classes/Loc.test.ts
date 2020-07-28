@@ -7,4 +7,10 @@ describe('Loc class', () => {
       end: 10,
     })
   })
+
+  test('Loc#slice should slice given object', () => {
+    const loc = new Loc(0, 11)
+
+    expect(loc.slice('hello world!')).toBe('hello world')
+  })
 })

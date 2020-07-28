@@ -1,4 +1,5 @@
 import { isIdentifierToken } from '../../src/utils'
+import { Loc } from '../../src'
 
 describe('isIdentifierToken', () => {
   test('should return whether passed argument is a identifier token', () => {
@@ -6,14 +7,14 @@ describe('isIdentifierToken', () => {
       isIdentifierToken({
         kind: 'identifier',
         identifier: 'hoge',
-        loc: { start: 0, end: 0 },
+        loc: new Loc(0, 0),
       })
     ).toBeTruthy()
 
     expect(
       isIdentifierToken({
         kind: 'while',
-        loc: { start: 0, end: 0 },
+        loc: new Loc(0, 0),
       })
     ).toBeFalsy()
   })

@@ -1,4 +1,5 @@
 import { isLiteralToken } from '../../src/utils'
+import { Loc } from '../../src'
 
 describe('isLiteralToken', () => {
   test('should return whether passed argument is a literal token.', () => {
@@ -6,14 +7,14 @@ describe('isLiteralToken', () => {
       isLiteralToken({
         kind: 'string_literal',
         value: '',
-        loc: { start: 0, end: 0 },
+        loc: new Loc(0, 0),
       })
     ).toBeTruthy()
 
     expect(
       isLiteralToken({
         kind: 'asterisk',
-        loc: { start: 0, end: 0 },
+        loc: new Loc(0, 0),
       })
     ).toBeFalsy()
   })
