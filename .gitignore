@@ -10,3 +10,6 @@ coverage
 # TypeScript
 /lib
 /types
+
+# Temp
+/tests/sandbox/parser.ts
