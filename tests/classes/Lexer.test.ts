@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { Lexer } from '../../src/classes'
 
 describe('Lexer test', () => {
@@ -37,5 +38,22 @@ describe('Lexer test', () => {
     expect(lexer.done()).toBeFalsy()
     lexer.nextToken()
     expect(lexer.done()).toBeTruthy()
+  })
+
+  test('should returns token walker', () => {
+    const lexer = new Lexer('10 + 20')
+    const walker = lexer.extract()
+
+    expect(walker.value()).toMatchObject({
+      kind: 'numeric_literal',
+      value: 10,
+    })
+    expect(walker.next()).toMatchObject({
+      kind: 'plus',
+    })
+    expect(walker.next()).toMatchObject({
+      kind: 'numeric_literal',
+      value: 20,
+    })
   })
 })
