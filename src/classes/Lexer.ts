@@ -8,7 +8,7 @@ import {
   IdentifierRule,
   PatternRule,
 } from '../impls'
-import { Token } from '../types'
+import { Token, TokenWalker } from '../types'
 import { Walker } from './Walker'
 
 /*
@@ -99,5 +99,23 @@ export class Lexer extends Walker<string> implements ILexer {
     this.next()
 
     return token
+  }
+
+  *[Symbol.iterator](): Iterator<Token | string> {
+    while (!this.done()) {
+      yield this.nextToken()
+    }
+  }
+
+  extract(): TokenWalker {
+    const tokens: Token[] = []
+
+    for (const token of this) {
+      if (typeof token !== 'string') {
+        tokens.push(token)
+      }
+    }
+
+    return new Walker<Token>(tokens)
   }
 }
