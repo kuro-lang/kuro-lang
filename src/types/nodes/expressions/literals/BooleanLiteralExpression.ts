@@ -5,5 +5,5 @@ import { LiteralNodeBase } from '../../..'
  */
 export type BooleanLiteralExpression = LiteralNodeBase<
   'boolean_literal_expression',
-  string
+  boolean
 >
