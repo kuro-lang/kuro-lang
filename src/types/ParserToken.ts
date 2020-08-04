@@ -8,6 +8,11 @@ export const ParserToken = {
   ExpressionParser: 'ExpressionParser',
 
   /**
+   * ArrayLiteralParser token.
+   */
+  ArrayLiteralParser: 'ArrayLiteralParser',
+
+  /**
    * StatementParser token.
    */
   StatementParser: 'StatementParser',
