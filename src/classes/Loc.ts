@@ -16,4 +16,14 @@ export class Loc implements ILoc {
   slice<T>(sliceable: Sliceable<T>): T {
     return sliceable.slice(this.start, this.end)
   }
+
+  /**
+   * Returns Loc object by given start and given length.
+   *
+   * @param start Start location.
+   * @param length Location length from start.
+   */
+  static fromStart(start: number, length = 1): Loc {
+    return new Loc(start, start + length)
+  }
 }
