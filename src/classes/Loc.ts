@@ -17,6 +17,13 @@ export class Loc implements ILoc {
     return sliceable.slice(this.start, this.end)
   }
 
+  merge(loc: ILoc): Loc {
+    const start = Math.min(this.start, loc.start)
+    const end = Math.max(this.end, loc.end)
+
+    return new Loc(start, end)
+  }
+
   /**
    * Returns Loc object by given start and given length.
    *
