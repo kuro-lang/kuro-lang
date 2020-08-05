@@ -5,7 +5,5 @@ import { LiteralNodeBase, Expression } from '../../..'
  */
 export type ArrayLiteralExpression = LiteralNodeBase<
   'array_literal_expression',
-  {
-    elements: Expression[]
-  }
+  Expression[]
 >
