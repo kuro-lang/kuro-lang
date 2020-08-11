@@ -6,9 +6,6 @@ import {
   ArrayLiteralExpressionParser,
 } from './expressions'
 
-export * from './expressions'
-export * from './IdentifierParser'
-
 const registerParsers = () => {
   container.register(
     ParserToken.LiteralExpressionParser,
@@ -21,3 +18,6 @@ const registerParsers = () => {
 }
 
 registerParsers()
+
+export * from './expressions'
+export * from './IdentifierParser'
