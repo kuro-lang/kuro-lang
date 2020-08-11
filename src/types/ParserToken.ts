@@ -18,6 +18,11 @@ export const ParserToken = {
   ArrayLiteralParser: 'ArrayLiteralParser',
 
   /**
+   * BinaryExpressionParser token.
+   */
+  BinaryExpressionParser: 'BinaryExpressionParser',
+
+  /**
    * StatementParser token.
    */
   StatementParser: 'StatementParser',
