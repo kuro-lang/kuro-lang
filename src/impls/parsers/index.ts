@@ -7,14 +7,12 @@ import {
 } from './expressions'
 
 const registerParsers = () => {
-  container.register(
-    ParserToken.LiteralExpressionParser,
-    LiteralExpressionParser
-  )
-  container.register(
-    ParserToken.ArrayLiteralParser,
-    ArrayLiteralExpressionParser
-  )
+  container.register(ParserToken.LiteralExpressionParser, {
+    useClass: LiteralExpressionParser,
+  })
+  container.register(ParserToken.ArrayLiteralParser, {
+    useClass: ArrayLiteralExpressionParser,
+  })
 }
 
 registerParsers()
