@@ -5,6 +5,13 @@ import { Node, TokenWalker, SourceCode } from '../types'
  */
 export interface IParser<T extends Node> {
   /**
+   * Validate to parse.
+   *
+   * @param walker Token walker.
+   */
+  validate(walker: TokenWalker): boolean
+
+  /**
    * Parse token of walker. And returns AST node object.
    *
    * @param source SourceCode.
