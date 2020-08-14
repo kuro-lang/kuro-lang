@@ -8,6 +8,10 @@ import { UnexpectedTokenError } from '../errors'
  */
 @injectable()
 export class IdentifierParser implements IParser<Identifier> {
+  validate(walker: TokenWalker): boolean {
+    return walker.value().kind === 'identifier'
+  }
+
   parse(source: SourceCode, walker: TokenWalker): Identifier {
     const token = walker.value()
 
