@@ -10,6 +10,7 @@ import {
 } from '../impls'
 import { Token, TokenWalker } from '../types'
 import { Walker } from './Walker'
+import { Loc } from './Loc'
 
 /*
  * Lexer class.
@@ -104,6 +105,10 @@ export class Lexer extends Walker<string> implements ILexer {
   *[Symbol.iterator](): Iterator<Token | string> {
     while (!this.done()) {
       yield this.nextToken()
+    }
+    yield {
+      kind: 'end_of_file',
+      loc: Loc.fromStart(this.index()),
     }
   }
 
