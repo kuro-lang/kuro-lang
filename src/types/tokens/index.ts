@@ -4,6 +4,7 @@ export * from './reserveds'
 export * from './symbols'
 
 export * from './CommentToken'
+export * from './EndOfFileToken'
 export * from './IdentifierToken'
 export * from './LiteralToken'
 export * from './NewLineToken'

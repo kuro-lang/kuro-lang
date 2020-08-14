@@ -5,6 +5,7 @@ import {
   SymbolToken,
   IdentifierToken,
   NewLineToken,
+  EndOfFileToken,
 } from './tokens'
 
 /*
@@ -12,6 +13,7 @@ import {
  */
 export type Token =
   | CommentToken
+  | EndOfFileToken
   | IdentifierToken
   | LiteralToken
   | NewLineToken
