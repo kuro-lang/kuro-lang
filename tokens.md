@@ -138,3 +138,8 @@
   - `in`
 - fn
   - `fn`
+
+## Others
+
+- end_of_file
+  - `EOF`
