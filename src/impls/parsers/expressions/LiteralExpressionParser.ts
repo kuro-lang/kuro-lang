@@ -20,6 +20,10 @@ export class LiteralExpressionParser implements IParser<LiteralExpression> {
     protected arrayLiteralParser: IParser<ArrayLiteralExpression>
   ) {}
 
+  validate(): boolean {
+    return true
+  }
+
   parse(source: SourceCode, walker: TokenWalker): LiteralExpression {
     const token = walker.value()
 

@@ -28,6 +28,10 @@ export class ArrayLiteralExpressionParser
     protected expressionParser: IParser<Expression>
   ) {}
 
+  validate(walker: TokenWalker): boolean {
+    return walker.value().kind === 'left_brace'
+  }
+
   parse(source: SourceCode, walker: TokenWalker): ArrayLiteralExpression {
     const leftBraceToken = walker.value()
 
