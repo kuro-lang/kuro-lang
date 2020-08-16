@@ -1,21 +1,10 @@
 import 'reflect-metadata'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { container } from 'tsyringe'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ParserToken } from '../..'
-import {
-  LiteralExpressionParser,
-  ArrayLiteralExpressionParser,
-} from './expressions'
 
-const registerParsers = () => {
-  container.register(ParserToken.LiteralExpressionParser, {
-    useClass: LiteralExpressionParser,
-  })
-  container.register(ParserToken.ArrayLiteralParser, {
-    useClass: ArrayLiteralExpressionParser,
-  })
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const registerParsers = () => {}
 
 registerParsers()
-
-export * from './expressions'
-export * from './IdentifierParser'
