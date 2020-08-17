@@ -1,10 +1,12 @@
 import { IParser } from '../..'
 import { Node, SourceCode, TokenWalker } from '../../types'
 import { LocatedError, UnexpectedTokenError } from '../errors'
+import { injectable } from 'tsyringe'
 
 /**
  * AtomParser class.
  */
+@injectable()
 export class AtomParser implements IParser<Node> {
   parse(source: SourceCode, walker: TokenWalker): Node {
     const token = walker.next()
