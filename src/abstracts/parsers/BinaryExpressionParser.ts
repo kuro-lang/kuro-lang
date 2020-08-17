@@ -16,10 +16,6 @@ export abstract class BinaryExpressionParser implements IParser<Expression> {
    */
   abstract kinds: TokenKind[]
 
-  validate(): boolean {
-    return true
-  }
-
   parse(source: SourceCode, walker: TokenWalker): Expression {
     let expression = this.subParser.parse(source, walker)
 
