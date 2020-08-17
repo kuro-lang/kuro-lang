@@ -1,4 +1,9 @@
 /**
  * ParserToken.
  */
-export const ParserToken = {} as const
+export const ParserToken = {
+  /**
+   * AtomParser token.
+   */
+  Atom: Symbol('Atom'),
+} as const
