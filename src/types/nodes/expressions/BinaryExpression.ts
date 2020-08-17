@@ -1,6 +1,6 @@
 import { NodeBase } from '../..'
-import { Expression } from '../Expression'
-import { Token } from '../../Token'
+import { PureToken } from '../../tokens'
+import { Node } from '../../Node'
 
 /**
  * BinaryExpression type.
@@ -9,15 +9,15 @@ export type BinaryExpression = NodeBase<'binary_expression'> & {
   /**
    * Operator token.
    */
-  operator: Token
+  operator: PureToken
 
   /**
    * Left expression node.
    */
-  left: Expression
+  left: Node
 
   /**
    * Right expression node.
    */
-  right: Expression
+  right: Node
 }
