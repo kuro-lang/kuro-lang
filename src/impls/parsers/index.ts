@@ -1,10 +1,14 @@
 import 'reflect-metadata'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { container } from 'tsyringe'
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ParserToken } from '../..'
+import { AtomParser } from './AtomParser'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const registerParsers = () => {}
+const registerParsers = () => {
+  container.register(ParserToken.Atom, {
+    useClass: AtomParser,
+  })
+}
 
 registerParsers()
+
+export * from './AtomParser'
