@@ -1,22 +1,29 @@
-import { IParser, Expression } from '../..'
-import { SourceCode, TokenWalker, TokenKind } from '../../types'
-import { loop } from '../../utils'
+import { IParser } from '../..'
+import {
+  SourceCode,
+  TokenWalker,
+  PureTokenKind,
+  Token,
+  PureToken,
+  Node,
+} from '../../types'
+import { loop, useEquals } from '../../utils'
 
 /**
  * BinaryExpressionParser class.
  */
-export abstract class BinaryExpressionParser implements IParser<Expression> {
+export abstract class BinaryExpressionParser implements IParser<Node> {
   /**
    * Sub parser.
    */
-  abstract subParser: IParser<Expression>
+  protected abstract subParser: IParser<Node>
 
   /**
    * Token kinds.
    */
-  kinds: TokenKind[] = []
+  protected kinds: PureTokenKind[] = []
 
-  parse(source: SourceCode, walker: TokenWalker): Expression {
+  parse(source: SourceCode, walker: TokenWalker): Node {
     let expression = this.subParser.parse(source, walker)
 
     return loop(({ end }) => {
@@ -26,8 +33,8 @@ export abstract class BinaryExpressionParser implements IParser<Expression> {
         return end(expression)
       }
 
-      if (this.kinds.includes(peek.kind)) {
-        walker.next()
+      if (this.isOperatorToken(peek)) {
+        console.log(walker.next())
         const right = this.subParser.parse(source, walker)
 
         expression = {
@@ -41,5 +48,14 @@ export abstract class BinaryExpressionParser implements IParser<Expression> {
         return end(expression)
       }
     })
+  }
+
+  /**
+   * Returns whether given token is the operator token.
+   *
+   * @param token Token.
+   */
+  protected isOperatorToken(token: Token): token is PureToken {
+    return !!this.kinds.find(useEquals(token.kind))
   }
 }
