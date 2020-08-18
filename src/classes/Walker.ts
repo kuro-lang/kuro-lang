@@ -45,6 +45,11 @@ export class Walker<T> implements IWalker<T> {
     return this.mIndex
   }
 
+  setIndex(index: number): this {
+    this.mIndex = index
+    return this
+  }
+
   value(): T {
     return this.mValues[this.mIndex]
   }

@@ -20,6 +20,11 @@ export interface IWalker<T> {
   index(): number
 
   /**
+   * Set current index.
+   */
+  setIndex(index: number): this
+
+  /**
    * Returns value.
    */
   value(): T
