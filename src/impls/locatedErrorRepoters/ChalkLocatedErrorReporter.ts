@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import { ILocatedErrorReporter } from '../..'
 import { LocatedError } from '../errors'
 import { SourceCode } from '../../types'
-import { indexed } from '../../utils'
+import { indexed, useClamp } from '../../utils'
 import { Lexer } from '../../classes'
 
 /*
@@ -12,6 +12,7 @@ export class ChalkLocatedErrorReporter implements ILocatedErrorReporter {
   report(source: SourceCode, error: LocatedError): void {
     const { message, loc } = error
     const { code, filename } = source
+    const clampRepeat = useClamp(0, Infinity)
 
     let lineNumber = 1
     for (const [i, char] of indexed(code.split(''))) {
@@ -43,8 +44,10 @@ export class ChalkLocatedErrorReporter implements ILocatedErrorReporter {
     const spacingToBody =
       ' '.repeat(head.length) +
       ' '.repeat(head.length + previous.length - head.length)
-    const bodyRange = '─'.repeat(body.length - 2)
-    const errorRange = `${spacingToBody}╰${bodyRange}┴───`
+    const bodyRange = '─'.repeat(clampRepeat(body.length - 2))
+    const errorRange = `${spacingToBody}╰${
+      bodyRange + (bodyRange.length > 1 ? '┴' : '─')
+    }───`
     const spacedMessage = ` Error(${loc.start}~${loc.end}): ${message}`
 
     const errorLine = `${errorRange}${spacedMessage}`
