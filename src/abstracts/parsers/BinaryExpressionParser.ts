@@ -8,11 +8,12 @@ import {
   Node,
 } from '../../types'
 import { loop, useEquals } from '../../utils'
+import { Parser } from './Parser'
 
 /**
  * BinaryExpressionParser class.
  */
-export abstract class BinaryExpressionParser implements IParser {
+export abstract class BinaryExpressionParser implements Parser {
   /**
    * Sub parser.
    */
