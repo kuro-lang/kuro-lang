@@ -12,11 +12,11 @@ import { loop, useEquals } from '../../utils'
 /**
  * BinaryExpressionParser class.
  */
-export abstract class BinaryExpressionParser implements IParser<Node> {
+export abstract class BinaryExpressionParser implements IParser {
   /**
    * Sub parser.
    */
-  protected abstract subParser: IParser<Node>
+  protected abstract subParser: IParser
 
   /**
    * Token kinds.
