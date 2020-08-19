@@ -140,6 +140,7 @@ export const ParserToken = {
    * Parse
    * - `break <expression?>`
    * - `continue`
+   * - `<expression>` (ExpressionStatement)
    */
   Statements: Symbol('Statements'),
 } as const
