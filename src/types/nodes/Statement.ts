@@ -1,6 +1,5 @@
 import {
   VariableDeclarationStatement,
-  BlockStatemenet,
   BreakStatement,
   ContinueStatement,
   ExpressionStatement,
@@ -10,7 +9,6 @@ import {
  * Statement type.
  */
 export type Statement =
-  | BlockStatemenet
   | BreakStatement
   | ContinueStatement
   | ExpressionStatement
