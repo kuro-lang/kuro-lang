@@ -7,7 +7,7 @@ import { injectable } from 'tsyringe'
  * AtomParser class.
  */
 @injectable()
-export class AtomParser implements IParser<Node> {
+export class AtomParser implements IParser {
   parse(source: SourceCode, walker: TokenWalker): Node {
     const token = walker.next()
 
