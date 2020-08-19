@@ -12,3 +12,4 @@ const registerParsers = () => {
 registerParsers()
 
 export * from './AtomParser'
+export * from './RootParser'
