@@ -1,6 +1,7 @@
 export * from './literals'
 
 export * from './BinaryExpression'
+export * from './BlockExpression'
 export * from './CallExpression'
 export * from './ElementAccessExpression'
 export * from './ForExpression'
