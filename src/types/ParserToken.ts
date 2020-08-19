@@ -131,8 +131,15 @@ export const ParserToken = {
    * - `while <expression> <BlockExpression>`
    * - `for <expression> in <expression> <BlockExpression>`
    * - `loop <expression> <BlockExpression must includes <BreakStatement>>`
+   */
+  GroupAndBlockAndControls: Symbol('GroupAndBlockAndControls'),
+
+  /**
+   * StatementsParser token.
+   *
+   * Parse
    * - `break <expression?>`
    * - `continue`
    */
-  GroupAndBlockAndControls: Symbol('GroupAndBlockAndControls'),
+  Statements: Symbol('Statements'),
 } as const
