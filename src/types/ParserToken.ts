@@ -25,7 +25,7 @@ export const ParserToken = {
    * Parse
    * - `<expression> || <expression>`
    */
-  Or: Symbol('LogicalOr'),
+  Or: Symbol('Or'),
 
   /**
    * AndExpressinParser token.
@@ -33,7 +33,7 @@ export const ParserToken = {
    * Parse
    * - `<expression> && <expression>`
    */
-  And: Symbol('LogicalAnd'),
+  And: Symbol('And'),
 
   /**
    * EquivalentParser token.
@@ -42,7 +42,7 @@ export const ParserToken = {
    * - `<expression> == <expression>`
    * - `<expression> != <expression>`
    */
-  Equivalent: Symbol('LogicalEquivalent'),
+  Equivalent: Symbol('Equivalent'),
 
   /**
    * ComparisonParser token.
@@ -105,9 +105,34 @@ export const ParserToken = {
   PostIncrementAndPostDecrement: Symbol('PostIncrementAndPostDecrement'),
 
   /**
-   * FunctionCallParser token.
+   * PropertyAccessAndElementAccessAndFunctionCallParser token.
    *
+   * Parse
    * - `<expression> (<expression>, <expressions>...)`
    */
-  FunctionCall: Symbol('FunctionCall'),
+  PropertyAccessAndElementAccessAndFunctionCall: Symbol(
+    'PropertyAccessAndElementAccessAndFunctionCall'
+  ),
+
+  /**
+   * GroupParser token.
+   *
+   * - `( <expression> )`
+   */
+  Group: Symbol('Group'),
+
+  /**
+   * GroupAndBlockAndControlsParser token.
+   *
+   * Parse
+   * - `( <expression> )`
+   * - `{ <statement>... }`
+   * - `if <expression> <BlockExpression> <else <IfExpression | BlockExpression>?>`
+   * - `while <expression> <BlockExpression>`
+   * - `for <expression> in <expression> <BlockExpression>`
+   * - `loop <expression> <BlockExpression must includes <BreakStatement>>`
+   * - `break <expression?>`
+   * - `continue`
+   */
+  GroupAndBlockAndControls: Symbol('GroupAndBlockAndControls'),
 } as const
