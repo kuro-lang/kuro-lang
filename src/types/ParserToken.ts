@@ -135,6 +135,13 @@ export const ParserToken = {
   GroupAndBlockAndControls: Symbol('GroupAndBlockAndControls'),
 
   /**
+   * ExpressionsParser token.
+   *
+   * - `<expression>`
+   */
+  Expressions: Symbol('Expressions'),
+
+  /**
    * StatementsParser token.
    *
    * Parse
