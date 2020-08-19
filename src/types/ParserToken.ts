@@ -12,20 +12,20 @@ export const ParserToken = {
   Atom: Symbol('Atom'),
 
   /**
-   * AssignExpressionParser token.
+   * AssignParser token.
    *
    * Parse
    * - `<expression> = <expression>`
    */
-  AssignExpression: Symbol('AssignExpression'),
+  Assign: Symbol('Assign'),
 
   /**
-   * OrExpressionParser token.
+   * OrParser token.
    *
    * Parse
    * - `<expression> || <expression>`
    */
-  OrExpression: Symbol('LogicalOrExpression'),
+  Or: Symbol('LogicalOr'),
 
   /**
    * AndExpressinParser token.
@@ -33,19 +33,19 @@ export const ParserToken = {
    * Parse
    * - `<expression> && <expression>`
    */
-  AndExpression: Symbol('LogicalAndExpression'),
+  And: Symbol('LogicalAnd'),
 
   /**
-   * EquivalentExpressionParser token.
+   * EquivalentParser token.
    *
    * Parse
    * - `<expression> == <expression>`
    * - `<expression> != <expression>`
    */
-  EquivalentExpression: Symbol('LogicalEquivalentExpression'),
+  Equivalent: Symbol('LogicalEquivalent'),
 
   /**
-   * ComparisonExpressionParser token.
+   * ComparisonParser token.
    *
    * Parse
    * - `<expression> < <expression>`
@@ -53,5 +53,61 @@ export const ParserToken = {
    * - `<expression> > <expression>`
    * - `<expression> >= <expression>`
    */
-  ComparisonExpression: Symbol('ComparisonExpression'),
+  Comparison: Symbol('Comparison'),
+
+  /**
+   * AdditionAndSubtractionParser token.
+   *
+   * Parse
+   * - `<expression> + <expression>`
+   * - `<expression> - <expression>`
+   */
+  AdditionAndSubtraction: Symbol('AdditionAndSubtraction'),
+
+  /**
+   * MultiplicationAndDivisionParser token.
+   *
+   * Parse
+   * - `<expression> * <expression>`
+   * - `<expression> / <expression>`
+   */
+  MultiplicationAndDivisionSurplus: Symbol('MultiplicationAndDivisionSurplus'),
+
+  /**
+   * PowerParser token.
+   *
+   * Parse
+   * - `<expression> ** <expression>`
+   */
+  Power: Symbol('Power'),
+
+  /**
+   * NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrementParser token.
+   *
+   * Parse
+   * - `! <expression>`
+   * - `+ <expression>`
+   * - `- <expression>`
+   * - `++ <expression>`
+   * - `-- <expression>`
+   */
+  NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrement: Symbol(
+    'NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrement'
+  ),
+
+  /**
+   * PostIncrementAndPostDecrementParser token.
+   *
+   * Parse
+   * - `<expression> ++`
+   * - `<expression> --`
+   */
+  PostIncrementAndPostDecrement: Symbol('PostIncrementAndPostDecrement'),
+
+  /**
+   * FunctionCallParser token.
+   *
+   * - `<expression> (<expression>, <expressions>...)`
+   */
+  FunctionCall: Symbol('FunctionCall'),
 } as const
