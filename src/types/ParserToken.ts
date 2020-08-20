@@ -108,6 +108,8 @@ export const ParserToken = {
    * PropertyAccessAndElementAccessAndFunctionCallParser token.
    *
    * Parse
+   * - `<expression>.<expression>`
+   * - `<expression>[<expression>]`
    * - `<expression> (<expression>, <expressions>...)`
    */
   PropertyAccessAndElementAccessAndFunctionCall: Symbol(
