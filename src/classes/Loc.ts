@@ -33,4 +33,17 @@ export class Loc implements ILoc {
   static fromStart(start: number, length = 1): Loc {
     return new Loc(start, start + length)
   }
+
+  /**
+   * Returns Loc object by given collection and given loc getter.
+   *
+   * @param collection Collection.
+   * @param getLoc Loc getter.
+   */
+  static fromCollection<T>(collection: T[], getLoc: (item: T) => ILoc): Loc {
+    return collection.reduce(
+      (loc, item) => loc.merge(getLoc(item)),
+      new Loc(0, 0)
+    )
+  }
 }
