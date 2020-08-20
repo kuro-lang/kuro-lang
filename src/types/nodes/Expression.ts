@@ -11,6 +11,7 @@ import {
   WhileExpression,
   ForExpression,
   FunctionExpression,
+  BlockExpression,
 } from './expressions'
 
 /**
@@ -18,6 +19,7 @@ import {
  */
 export type Expression =
   | BinaryExpression
+  | BlockExpression
   | CallExpression
   | ElementAccessExpression
   | ForExpression
