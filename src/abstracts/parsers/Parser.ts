@@ -1,6 +1,7 @@
 import { IParser } from '../..'
 import { SourceCode, TokenWalker, Node } from '../../types'
 import { LocatedError } from '../../impls'
+import { ILoc } from '../../interfaces'
 
 /**
  * Parser abstract class.
@@ -19,5 +20,15 @@ export abstract class Parser implements IParser {
     walker: TokenWalker
   ): LocatedError {
     return new LocatedError(`peek error`, walker.locTo(-1))
+  }
+
+  /**
+   * Returns a LocatedError object that has a message of unexpected error.
+   *
+   * @param source SourceCode object.
+   * @param loc Token walker.
+   */
+  protected createUnexpectedError(source: SourceCode, loc: ILoc): LocatedError {
+    return new LocatedError(`unexpected token ${loc.slice(source.code)}`, loc)
   }
 }
