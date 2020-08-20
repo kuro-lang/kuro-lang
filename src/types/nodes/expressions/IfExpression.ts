@@ -1,6 +1,6 @@
 import { NodeBase } from '../..'
 import { Expression } from '../Expression'
-import { BlockStatemenet } from '../statements'
+import { BlockExpression } from './BlockExpression'
 
 /**
  * IfExpression type.
@@ -14,10 +14,10 @@ export type IfExpression = NodeBase<'if_expression'> & {
   /**
    * Then node.
    */
-  then: BlockStatemenet
+  then: BlockExpression
 
   /**
    * Else node.
    */
-  else?: IfExpression | BlockStatemenet
+  else?: IfExpression | BlockExpression
 }
