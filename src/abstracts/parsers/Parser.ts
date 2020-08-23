@@ -27,8 +27,20 @@ export abstract class Parser implements IParser {
    *
    * @param source SourceCode object.
    * @param loc Token walker.
+   * @param expected Expected token kind.
    */
-  protected createUnexpectedError(source: SourceCode, loc: ILoc): LocatedError {
+  protected createUnexpectedError(
+    source: SourceCode,
+    loc: ILoc,
+    expected?: string
+  ): LocatedError {
+    if (expected) {
+      return new LocatedError(
+        `expected ${expected}, but got ${loc.slice(source.code)}`,
+        loc
+      )
+    }
+
     return new LocatedError(`unexpected token ${loc.slice(source.code)}`, loc)
   }
 }
