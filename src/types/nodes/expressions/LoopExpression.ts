@@ -1,5 +1,5 @@
 import { NodeBase } from '../..'
-import { BlockStatemenet } from '../statements'
+import { BlockExpression } from './BlockExpression'
 
 /**
  * LoopExpression type.
@@ -8,5 +8,5 @@ export type LoopExpression = NodeBase<'loop_expression'> & {
   /**
    * Statement node.
    */
-  statement: BlockStatemenet
+  statement: BlockExpression
 }
