@@ -10,6 +10,8 @@ import {
   BlockExpression,
   IfExpression,
   WhileExpression,
+  ForExpression,
+  Identifier,
 } from '../../types'
 import { IParser } from '../../interfaces'
 import { loop } from '../../utils'
@@ -65,6 +67,57 @@ export class GroupAndBlockAndControlsParser extends Parser {
 
     if (peek.kind === 'while') {
       return this.parseWhileExpression(source, walker)
+    }
+  }
+
+  protected parseForExpression(
+    source: SourceCode,
+    walker: TokenWalker
+  ): ForExpression {
+    const forToken = walker.next()
+
+    if (!forToken) {
+      throw this.createPeekError(source, walker)
+    }
+
+    const identifierToken = walker.next()
+
+    if (!identifierToken) {
+      throw this.createPeekError(source, walker)
+    }
+
+    if (identifierToken.kind !== 'identifier') {
+      throw this.createUnexpectedError(
+        source,
+        identifierToken.loc,
+        'identifier'
+      )
+    }
+
+    const variable: Identifier = {
+      ...identifierToken,
+    }
+
+    const inToken = walker.next()
+
+    if (!inToken) {
+      throw this.createPeekError(source, walker)
+    }
+
+    if (inToken.kind !== 'in') {
+      throw this.createUnexpectedError(source, inToken.loc, 'in')
+    }
+
+    const expression = this.expressions.parse(source, walker)
+    const statement = this.parseBlockExpression(source, walker)
+
+    return {
+      kind: 'for_expression',
+      variable,
+      inToken,
+      expression,
+      statement,
+      loc: forToken.loc.merge(statement.loc),
     }
   }
 
