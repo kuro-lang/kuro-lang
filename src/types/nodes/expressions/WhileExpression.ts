@@ -1,6 +1,6 @@
 import { NodeBase } from '../..'
 import { Expression } from '../Expression'
-import { BlockStatemenet } from '../statements'
+import { BlockExpression } from './BlockExpression'
 
 /**
  * WhileExpression type.
@@ -14,5 +14,5 @@ export type WhileExpression = NodeBase<'while_expression'> & {
   /**
    * Statement node.
    */
-  statement: BlockStatemenet
+  statement: BlockExpression
 }
