@@ -12,6 +12,7 @@ import {
   WhileExpression,
   ForExpression,
   Identifier,
+  LoopExpression,
 } from '../../types'
 import { IParser } from '../../interfaces'
 import { loop } from '../../utils'
@@ -67,6 +68,35 @@ export class GroupAndBlockAndControlsParser extends Parser {
 
     if (peek.kind === 'while') {
       return this.parseWhileExpression(source, walker)
+    }
+
+    if (peek.kind === 'loop') {
+      return this.parseLoopExpression(source, walker)
+    }
+  }
+
+  /**
+   * Parse loop expression.
+   *
+   * @param source SourceCode object.
+   * @param walker Token walker.
+   */
+  protected parseLoopExpression(
+    source: SourceCode,
+    walker: TokenWalker
+  ): LoopExpression {
+    const loopToken = walker.next()
+
+    if (!loopToken) {
+      throw this.createPeekError(source, walker)
+    }
+
+    const statement = this.parseBlockExpression(source, walker)
+
+    return {
+      kind: 'loop_expression',
+      statement,
+      loc: loopToken.loc.merge(statement.loc),
     }
   }
 
