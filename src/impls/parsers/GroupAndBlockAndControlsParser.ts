@@ -73,6 +73,11 @@ export class GroupAndBlockAndControlsParser extends Parser {
     if (peek.kind === 'loop') {
       return this.parseLoopExpression(source, walker)
     }
+
+    return this.propertyAccessAndElementAccessAndFunctionCall.parse(
+      source,
+      walker
+    )
   }
 
   /**
