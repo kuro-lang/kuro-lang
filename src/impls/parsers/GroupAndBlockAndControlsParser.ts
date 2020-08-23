@@ -9,6 +9,7 @@ import {
   Expression,
   BlockExpression,
   IfExpression,
+  WhileExpression,
 } from '../../types'
 import { IParser } from '../../interfaces'
 import { loop } from '../../utils'
@@ -60,6 +61,37 @@ export class GroupAndBlockAndControlsParser extends Parser {
 
     if (peek.kind === 'if') {
       return this.parseIfExpression(source, walker)
+    }
+
+    if (peek.kind === 'while') {
+      return this.parseWhileExpression(source, walker)
+    }
+  }
+
+  /**
+   * Parse while expression.
+   *
+   * @param source SourceCode object.
+   * @param walker Token walker.
+   */
+  protected parseWhileExpression(
+    source: SourceCode,
+    walker: TokenWalker
+  ): WhileExpression {
+    const whileToken = walker.next()
+
+    if (!whileToken) {
+      throw this.createPeekError(source, walker)
+    }
+
+    const condition = this.expressions.parse(source, walker)
+    const statement = this.parseBlockExpression(source, walker)
+
+    return {
+      kind: 'while_expression',
+      condition,
+      statement,
+      loc: whileToken.loc.merge(statement.loc),
     }
   }
 
