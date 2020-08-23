@@ -100,6 +100,12 @@ export class GroupAndBlockAndControlsParser extends Parser {
     }
   }
 
+  /**
+   * Parse for expression.
+   *
+   * @param source SourceCode object.
+   * @param walker Token walker.
+   */
   protected parseForExpression(
     source: SourceCode,
     walker: TokenWalker
