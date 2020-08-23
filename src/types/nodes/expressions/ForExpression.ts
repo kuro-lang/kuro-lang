@@ -1,8 +1,8 @@
 import { NodeBase } from '../..'
 import { Expression } from '../Expression'
-import { BlockStatemenet } from '../statements'
 import { InToken } from '../../tokens'
 import { Identifier } from '../Identifier'
+import { BlockExpression } from './BlockExpression'
 
 /**
  * ForExpression type.
@@ -26,5 +26,5 @@ export type ForExpression = NodeBase<'for_expression'> & {
   /**
    * Statement node.
    */
-  statement: BlockStatemenet
+  statement: BlockExpression
 }
