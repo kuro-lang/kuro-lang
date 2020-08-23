@@ -63,6 +63,12 @@ export class GroupAndBlockAndControlsParser extends Parser {
     }
   }
 
+  /**
+   * Parse if expression.
+   *
+   * @param source SourceCode object.
+   * @param walker Token walker.
+   */
   protected parseIfExpression(
     source: SourceCode,
     walker: TokenWalker
