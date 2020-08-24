@@ -15,10 +15,15 @@ import { ComparisonParser } from './ComparisonParser'
 import { EquivalentParser } from './EquivalentParser'
 import { AndParser } from './AndParser'
 import { OrParser } from './OrParser'
+import { AssignParser } from './AssignParser'
 
 const registerParsers = () => {
   container.register(ParserToken.Atom, {
     useClass: AtomParser,
+  })
+
+  container.register(ParserToken.Assign, {
+    useClass: AssignParser,
   })
 
   container.register(ParserToken.Or, {
@@ -84,6 +89,7 @@ registerParsers()
 
 export * from './AtomParser'
 export * from './RootParser'
+export * from './AssignParser'
 export * from './OrParser'
 export * from './AndParser'
 export * from './EquivalentParser'
