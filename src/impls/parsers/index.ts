@@ -12,10 +12,15 @@ import { PowerParser } from './PowerParser'
 import { MultiplicationAndDivisionSurplusParser } from './MultiplicationAndDivisionSurplusParser'
 import { AdditionAndSubtractionParser } from './AdditionAndSubtractionParser'
 import { ComparisonParser } from './ComparisonParser'
+import { EquivalentParser } from './EquivalentParser'
 
 const registerParsers = () => {
   container.register(ParserToken.Atom, {
     useClass: AtomParser,
+  })
+
+  container.register(ParserToken.Equivalent, {
+    useClass: EquivalentParser,
   })
 
   container.register(ParserToken.Comparison, {
@@ -69,6 +74,7 @@ registerParsers()
 
 export * from './AtomParser'
 export * from './RootParser'
+export * from './EquivalentParser'
 export * from './ComparisonParser'
 export * from './AdditionAndSubtractionParser'
 export * from './MultiplicationAndDivisionSurplusParser'
