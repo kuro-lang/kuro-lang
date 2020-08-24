@@ -159,4 +159,12 @@ export const ParserToken = {
    * - `<expression>` (ExpressionStatement)
    */
   Statements: Symbol('Statements'),
+
+  /**
+   * RootParser token.
+   *
+   * Parse
+   * - <statement>...
+   */
+  Root: Symbol('Root'),
 } as const
