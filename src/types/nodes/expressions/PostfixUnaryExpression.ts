@@ -5,7 +5,7 @@ import { Token } from '../../Token'
 /**
  * PostfixUnaryExpression type.
  */
-export type PostfixUnaryExpression = NodeBase<'prefix_unary_expression'> & {
+export type PostfixUnaryExpression = NodeBase<'postfix_unary_expression'> & {
   /**
    * Operator token.
    */
