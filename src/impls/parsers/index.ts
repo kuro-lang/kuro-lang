@@ -11,10 +11,15 @@ import { NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrementParser 
 import { PowerParser } from './PowerParser'
 import { MultiplicationAndDivisionSurplusParser } from './MultiplicationAndDivisionSurplusParser'
 import { AdditionAndSubtractionParser } from './AdditionAndSubtractionParser'
+import { ComparisonParser } from './ComparisonParser'
 
 const registerParsers = () => {
   container.register(ParserToken.Atom, {
     useClass: AtomParser,
+  })
+
+  container.register(ParserToken.Comparison, {
+    useClass: ComparisonParser,
   })
 
   container.register(ParserToken.AdditionAndSubtraction, {
@@ -64,6 +69,7 @@ registerParsers()
 
 export * from './AtomParser'
 export * from './RootParser'
+export * from './ComparisonParser'
 export * from './AdditionAndSubtractionParser'
 export * from './MultiplicationAndDivisionSurplusParser'
 export * from './PowerParser'
