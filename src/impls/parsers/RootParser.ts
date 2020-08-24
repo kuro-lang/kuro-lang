@@ -17,7 +17,7 @@ import { Loc } from '../../classes'
 export class RootParser implements IParser {
   constructor(
     @inject(ParserToken.Statements)
-    protected statements: IParser
+    protected statements: IParser<Statement>
   ) {}
 
   parse(source: SourceCode, walker: TokenWalker): Root {
