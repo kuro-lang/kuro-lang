@@ -8,10 +8,15 @@ import { GroupAndBlockAndControlsParser } from './GroupAndBlockAndControlsParser
 import { PropertyAccessAndElementAccessAndFunctionCallParser } from './PropertyAccessAndElementAccessAndFunctionCallParser'
 import { PostIncrementAndPostDecrementParser } from './PostIncrementAndPostDecrementParser'
 import { NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrementParser } from './NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrementParser'
+import { PowerParser } from './PowerParser'
 
 const registerParsers = () => {
   container.register(ParserToken.Atom, {
     useClass: AtomParser,
+  })
+
+  container.register(ParserToken.Power, {
+    useClass: PowerParser,
   })
 
   container.register(
@@ -49,6 +54,7 @@ registerParsers()
 
 export * from './AtomParser'
 export * from './RootParser'
+export * from './PowerParser'
 export * from './NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrementParser'
 export * from './PostIncrementAndPostDecrementParser'
 export * from './PropertyAccessAndElementAccessAndFunctionCallParser'
