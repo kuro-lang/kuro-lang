@@ -16,6 +16,12 @@ export const ParserToken = {
    *
    * Parse
    * - `<expression> = <expression>`
+   * - `<expression> += <expression>`
+   * - `<expression> -= <expression>`
+   * - `<expression> *= <expression>`
+   * - `<expression> **= <expression>`
+   * - `<expression> /= <expression>`
+   * - `<expression> %= <expression>`
    */
   Assign: Symbol('Assign'),
 
