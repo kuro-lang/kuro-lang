@@ -16,6 +16,7 @@ import { EquivalentParser } from './EquivalentParser'
 import { AndParser } from './AndParser'
 import { OrParser } from './OrParser'
 import { AssignParser } from './AssignParser'
+import { RootParser } from './RootParser'
 
 const registerParsers = () => {
   container.register(ParserToken.Atom, {
@@ -82,6 +83,10 @@ const registerParsers = () => {
 
   container.register(ParserToken.Expressions, {
     useClass: ExpressionsParser,
+  })
+
+  container.register(ParserToken.Root, {
+    useClass: RootParser,
   })
 }
 
