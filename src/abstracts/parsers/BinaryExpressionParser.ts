@@ -13,7 +13,7 @@ import { Parser } from './Parser'
 /**
  * BinaryExpressionParser class.
  */
-export abstract class BinaryExpressionParser implements Parser {
+export abstract class BinaryExpressionParser extends Parser {
   /**
    * Sub parser.
    */
