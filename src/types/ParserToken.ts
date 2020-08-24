@@ -70,6 +70,7 @@ export const ParserToken = {
    * Parse
    * - `<expression> * <expression>`
    * - `<expression> / <expression>`
+   * - `<expression> % <expression>`
    */
   MultiplicationAndDivisionSurplus: Symbol('MultiplicationAndDivisionSurplus'),
 
