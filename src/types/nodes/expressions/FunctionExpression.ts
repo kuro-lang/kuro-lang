@@ -1,7 +1,7 @@
 import { NodeBase } from '../..'
 import { Identifier } from '../Identifier'
 import { Parameter } from '../Parameter'
-import { BlockStatemenet } from '../statements'
+import { BlockExpression } from './BlockExpression'
 
 /**
  * FunctionExpression type.
@@ -20,5 +20,5 @@ export type FunctionExpression = NodeBase<'function_expression'> & {
   /**
    * Body node.
    */
-  body: BlockStatemenet
+  body: BlockExpression
 }
