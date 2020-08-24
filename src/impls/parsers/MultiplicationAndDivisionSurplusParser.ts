@@ -11,7 +11,7 @@ export class MultiplicationAndDivisionSurplusParser extends BinaryExpressionPars
   kinds: PureTokenKind[] = ['asterisk', 'slash', 'percent']
 
   constructor(
-    @inject(ParserToken.MultiplicationAndDivisionSurplus)
+    @inject(ParserToken.AdditionAndSubtraction)
     protected subParser: IParser<Expression>
   ) {
     super()
