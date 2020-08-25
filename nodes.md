@@ -1,6 +1,10 @@
 # 🌴 Nodes
 
-## Expressions
+## 🎋 Parsers dependencies
+
+![Parsers dependencies graph](https://github.com/quro-framework/kuro-lang/blob/develop/parsers.drawio.svg)
+
+## 🔢 Expressions
 
 - `numeric_literal_expression`
   - `10`
@@ -50,7 +54,7 @@
 - `function_expression`
   - `<expression> = fn <name>(<arg0>, <arg1>, ...) { <expression | statement> }`
 
-## Statement
+## 📓 Statement
 
 - `block_statement`
   - `{ <statement | expression> }`
@@ -65,7 +69,7 @@
 - `continue_statement`
   - `continue`
 
-## Others
+## 🤔 Others
 
 - `identifier`
   - `<identifier>`
