@@ -1,7 +1,8 @@
 import { BinaryExpressionParser, PureTokenKind } from '../..'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import { ParserToken, Expression } from '../../types'
 import { IParser } from '../../interfaces'
+import { injectParser } from './parserContainer'
 
 /**
  * EquivalentParser class.
@@ -10,9 +11,5 @@ import { IParser } from '../../interfaces'
 export class EquivalentParser extends BinaryExpressionParser {
   kinds: PureTokenKind[] = ['equals_equals', 'exclamation_equals']
 
-  constructor(
-    @inject(ParserToken.And) protected subParser: IParser<Expression>
-  ) {
-    super()
-  }
+  @injectParser(ParserToken.Comparison) protected subParser: IParser<Expression>
 }

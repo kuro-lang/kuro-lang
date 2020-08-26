@@ -1,7 +1,8 @@
 import { PrefixUnaryExpressionParser } from '../..'
 import { TokenKind, ParserToken, Expression } from '../../types'
-import { inject, injectable } from 'tsyringe'
+import { injectable } from 'inversify'
 import { IParser } from '../../interfaces'
+import { injectParser } from './parserContainer'
 
 /**
  * NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrementParser class.
@@ -16,9 +17,6 @@ export class NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrementPar
     'minus_minus',
   ]
 
-  constructor(
-    @inject(ParserToken.Power) protected subParser: IParser<Expression>
-  ) {
-    super()
-  }
+  @injectParser(ParserToken.PostIncrementAndPostDecrement)
+  protected subParser: IParser<Expression>
 }

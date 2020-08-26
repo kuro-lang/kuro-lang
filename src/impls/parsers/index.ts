@@ -1,5 +1,4 @@
 import 'reflect-metadata'
-import { container } from 'tsyringe'
 import { ParserToken } from '../..'
 import { AtomParser } from './AtomParser'
 import { ExpressionsParser } from './Expressions'
@@ -17,77 +16,53 @@ import { AndParser } from './AndParser'
 import { OrParser } from './OrParser'
 import { AssignParser } from './AssignParser'
 import { RootParser } from './RootParser'
+import { parserContainer } from './parserContainer'
+import { IParser } from '../../interfaces'
+import { Node } from '../../types'
+
+/**
+ * Register a parser by given key and given class.
+ *
+ * @param tokenKey Key of parser token.
+ * @param parserClass Parser class.
+ */
+const registerParser = <N extends Node>(
+  tokenKey: keyof typeof ParserToken,
+  parserClass: new () => IParser<N>
+) => {
+  parserContainer.bind<IParser<N>>(ParserToken[tokenKey]).to(parserClass)
+}
 
 const registerParsers = () => {
-  container.register(ParserToken.Atom, {
-    useClass: AtomParser,
-  })
-
-  container.register(ParserToken.Assign, {
-    useClass: AssignParser,
-  })
-
-  container.register(ParserToken.Or, {
-    useClass: OrParser,
-  })
-
-  container.register(ParserToken.And, {
-    useClass: AndParser,
-  })
-
-  container.register(ParserToken.Equivalent, {
-    useClass: EquivalentParser,
-  })
-
-  container.register(ParserToken.Comparison, {
-    useClass: ComparisonParser,
-  })
-
-  container.register(ParserToken.AdditionAndSubtraction, {
-    useClass: AdditionAndSubtractionParser,
-  })
-
-  container.register(ParserToken.MultiplicationAndDivisionSurplus, {
-    useClass: MultiplicationAndDivisionSurplusParser,
-  })
-
-  container.register(ParserToken.Power, {
-    useClass: PowerParser,
-  })
-
-  container.register(
-    ParserToken.NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrement,
-    {
-      useClass: NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrementParser,
-    }
+  registerParser('Atom', AtomParser)
+  registerParser('Assign', AssignParser)
+  registerParser('Or', OrParser)
+  registerParser('And', AndParser)
+  registerParser('Equivalent', EquivalentParser)
+  registerParser('Comparison', ComparisonParser)
+  registerParser('AdditionAndSubtraction', AdditionAndSubtractionParser)
+  registerParser(
+    'MultiplicationAndDivisionSurplus',
+    MultiplicationAndDivisionSurplusParser
   )
-
-  container.register(ParserToken.PostIncrementAndPostDecrement, {
-    useClass: PostIncrementAndPostDecrementParser,
-  })
-
-  container.register(
-    ParserToken.PropertyAccessAndElementAccessAndFunctionCall,
-    {
-      useClass: PropertyAccessAndElementAccessAndFunctionCallParser,
-    }
+  registerParser('Power', PowerParser)
+  registerParser(
+    'NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrement',
+    NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrementParser
   )
-
-  container.register(ParserToken.GroupAndBlockAndControls, {
-    useClass: GroupAndBlockAndControlsParser,
-  })
-
-  container.register(ParserToken.Statements, {
-    useClass: StatementsParser,
-  })
-
-  container.register(ParserToken.Expressions, {
-    useClass: ExpressionsParser,
-  })
-
-  container.register(ParserToken.Root, {
-    useClass: RootParser,
-  })
+  registerParser(
+    'PostIncrementAndPostDecrement',
+    PostIncrementAndPostDecrementParser
+  )
+  registerParser(
+    'PropertyAccessAndElementAccessAndFunctionCall',
+    PropertyAccessAndElementAccessAndFunctionCallParser
+  )
+  // registerParser('Group', Group)
+  registerParser('GroupAndBlockAndControls', GroupAndBlockAndControlsParser)
+  registerParser('Expressions', ExpressionsParser)
+  registerParser('Statements', StatementsParser)
+  registerParser('Root', RootParser)
 }
 
 registerParsers()

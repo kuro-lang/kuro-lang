@@ -1,7 +1,8 @@
 import { BinaryExpressionParser } from '../../abstracts'
 import { PureTokenKind, ParserToken, Expression } from '../../types'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import { IParser } from '../../interfaces'
+import { injectParser } from './parserContainer'
 
 /**
  * MultiplicationAndDivisionSurplusParser class.
@@ -10,10 +11,6 @@ import { IParser } from '../../interfaces'
 export class MultiplicationAndDivisionSurplusParser extends BinaryExpressionParser {
   kinds: PureTokenKind[] = ['asterisk', 'slash', 'percent']
 
-  constructor(
-    @inject(ParserToken.AdditionAndSubtraction)
-    protected subParser: IParser<Expression>
-  ) {
-    super()
-  }
+  @injectParser(ParserToken.Power)
+  protected subParser: IParser<Expression>
 }

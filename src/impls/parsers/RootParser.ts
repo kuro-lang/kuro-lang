@@ -6,19 +6,18 @@ import {
   ParserToken,
   Statement,
 } from '../../types'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import { loop } from '../../utils'
 import { Loc } from '../../classes'
+import { injectParser } from './parserContainer'
 
 /**
  * RootParser class.
  */
 @injectable()
 export class RootParser implements IParser {
-  constructor(
-    @inject(ParserToken.Statements)
-    protected statements: IParser<Statement>
-  ) {}
+  @injectParser(ParserToken.Statements)
+  protected statements: IParser<Statement>
 
   parse(source: SourceCode, walker: TokenWalker): Root {
     const statements: Statement[] = []

@@ -1,7 +1,8 @@
 import { PostfixUnaryExpressionParser } from '../..'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import { ParserToken, Expression, TokenKind } from '../../types'
 import { IParser } from '../../interfaces'
+import { injectParser } from './parserContainer'
 
 /**
  * PostIncrementAndPostDecrementParser class.
@@ -10,12 +11,6 @@ import { IParser } from '../../interfaces'
 export class PostIncrementAndPostDecrementParser extends PostfixUnaryExpressionParser {
   kinds: TokenKind[] = ['plus_plus', 'minus_minus']
 
-  constructor(
-    @inject(
-      ParserToken.NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrement
-    )
-    protected subParser: IParser<Expression>
-  ) {
-    super()
-  }
+  @injectParser(ParserToken.PropertyAccessAndElementAccessAndFunctionCall)
+  protected subParser: IParser<Expression>
 }

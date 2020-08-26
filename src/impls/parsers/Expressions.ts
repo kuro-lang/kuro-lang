@@ -1,21 +1,15 @@
 import { Parser } from '../../abstracts/parsers'
 import { SourceCode, TokenWalker, ParserToken, Node } from '../../types'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import { IParser } from '../../interfaces'
+import { injectParser } from './parserContainer'
 
 /**
  * ExpressionsParser
  */
 @injectable()
 export class ExpressionsParser extends Parser {
-  /**
-   * ExpressionsParser constructor.
-   *
-   * @param assign Assign parser.
-   */
-  constructor(@inject(ParserToken.Assign) protected assign: IParser) {
-    super()
-  }
+  @injectParser(ParserToken.Assign) protected assign: IParser
 
   parse(source: SourceCode, walker: TokenWalker): Node {
     return this.assign.parse(source, walker)

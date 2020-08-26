@@ -7,22 +7,22 @@ import {
   Expression,
   Identifier,
 } from '../../types'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import { IParser } from '../../interfaces'
 import { loop } from '../../utils'
+import { injectParser } from './parserContainer'
 
 /**
  * PropertyAccessAndElementAccessAndFunctionCallParser class.
  */
 @injectable()
 export class PropertyAccessAndElementAccessAndFunctionCallParser extends Parser {
-  constructor(
-    @inject(ParserToken.Expressions) protected expressions: IParser<Expression>,
-    @inject(ParserToken.PostIncrementAndPostDecrement)
-    protected postIncrementAndPostDecrement: IParser<Expression>
-  ) {
-    super()
-  }
+  @injectParser(ParserToken.GroupAndBlockAndControls)
+  protected groupAndBlockAndControls: IParser<Expression>
+
+  @injectParser(ParserToken.Expressions) protected expressions: IParser<
+    Expression
+  >
 
   parse(source: SourceCode, walker: TokenWalker): Node {
     const peek = walker.peek()
@@ -144,6 +144,6 @@ export class PropertyAccessAndElementAccessAndFunctionCallParser extends Parser 
       })
     }
 
-    return this.postIncrementAndPostDecrement.parse(source, walker)
+    return this.groupAndBlockAndControls.parse(source, walker)
   }
 }

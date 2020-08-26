@@ -1,5 +1,5 @@
 import { Parser } from '../..'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import {
   ParserToken,
   SourceCode,
@@ -17,30 +17,24 @@ import {
 import { IParser } from '../../interfaces'
 import { loop } from '../../utils'
 import { Loc } from '../../classes'
+import { injectParser } from './parserContainer'
 
 /**
  * GroupAndBlockAndControlsParser class.
  */
 @injectable()
 export class GroupAndBlockAndControlsParser extends Parser {
-  /**
-   * GroupAndBlockAndControlsParser constructor.
-   *
-   * @param expressions ExpressionsParser.
-   * @param propertyAccessAndElementAccessAndFunctionCall PropertyAccessAndElementAccessAndFunctionCallParser.
-   * @param statements StatementsParser.
-   */
-  constructor(
-    @inject(ParserToken.Expressions) protected expressions: IParser<Expression>,
-    @inject(ParserToken.PropertyAccessAndElementAccessAndFunctionCall)
-    protected propertyAccessAndElementAccessAndFunctionCall: IParser,
-    @inject(ParserToken.Statements) protected statements: IParser<Statement>
-  ) {
-    super()
-  }
+  @injectParser(ParserToken.Expressions) protected expressions: IParser<
+    Expression
+  >
+
+  @injectParser(ParserToken.Atom) protected atom: IParser
+
+  @injectParser(ParserToken.Statements) protected statements: IParser<Statement>
 
   parse(source: SourceCode, walker: TokenWalker): Node {
     const peek = walker.peek()
+    console.log(peek)
 
     if (!peek) {
       throw this.createPeekError(source, walker)
@@ -74,10 +68,7 @@ export class GroupAndBlockAndControlsParser extends Parser {
       return this.parseLoopExpression(source, walker)
     }
 
-    return this.propertyAccessAndElementAccessAndFunctionCall.parse(
-      source,
-      walker
-    )
+    return this.atom.parse(source, walker)
   }
 
   /**

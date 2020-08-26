@@ -1,7 +1,8 @@
 import { BinaryExpressionParser } from '../..'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import { PureTokenKind, ParserToken, Expression } from '../../types'
 import { IParser } from '../../interfaces'
+import { injectParser } from './parserContainer'
 
 /**
  * OrParser class.
@@ -10,9 +11,5 @@ import { IParser } from '../../interfaces'
 export class OrParser extends BinaryExpressionParser {
   kinds: PureTokenKind[] = ['bar_bar']
 
-  constructor(
-    @inject(ParserToken.Assign) protected subParser: IParser<Expression>
-  ) {
-    super()
-  }
+  @injectParser(ParserToken.And) protected subParser: IParser<Expression>
 }

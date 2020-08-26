@@ -9,10 +9,12 @@ import {
 } from '../../types'
 import { loop, useEquals } from '../../utils'
 import { Parser } from './Parser'
+import { injectable } from 'inversify'
 
 /**
  * BinaryExpressionParser class.
  */
+@injectable()
 export abstract class BinaryExpressionParser extends Parser {
   /**
    * Sub parser.
@@ -25,7 +27,9 @@ export abstract class BinaryExpressionParser extends Parser {
   protected kinds: PureTokenKind[] = []
 
   parse(source: SourceCode, walker: TokenWalker): Node {
+    console.log(`Start ${this.kinds.join(', ')}`)
     let expression = this.subParser.parse(source, walker)
+    console.log(`End ${this.kinds.join(', ')}`)
 
     return loop(({ end }) => {
       const peek = walker.peek()

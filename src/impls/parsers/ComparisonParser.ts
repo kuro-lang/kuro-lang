@@ -1,7 +1,8 @@
 import { BinaryExpressionParser, PureTokenKind } from '../..'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import { ParserToken, Expression } from '../../types'
 import { IParser } from '../../interfaces'
+import { injectParser } from './parserContainer'
 
 /**
  * ComparisonParser class.
@@ -15,9 +16,6 @@ export class ComparisonParser extends BinaryExpressionParser {
     'greater_equals_than',
   ]
 
-  constructor(
-    @inject(ParserToken.Equivalent) protected subParser: IParser<Expression>
-  ) {
-    super()
-  }
+  @injectParser(ParserToken.AdditionAndSubtraction)
+  protected subParser: IParser<Expression>
 }

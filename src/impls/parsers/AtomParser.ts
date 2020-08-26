@@ -1,7 +1,7 @@
 import { IParser } from '../..'
 import { Node, SourceCode, TokenWalker } from '../../types'
 import { LocatedError, UnexpectedTokenError } from '../errors'
-import { injectable } from 'tsyringe'
+import { injectable } from 'inversify'
 
 /**
  * AtomParser class.

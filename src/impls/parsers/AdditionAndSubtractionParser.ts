@@ -1,7 +1,8 @@
 import { BinaryExpressionParser } from '../../abstracts'
 import { PureTokenKind, ParserToken, Expression } from '../../types'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import { IParser } from '../../interfaces'
+import { injectParser } from './parserContainer'
 
 /**
  * AdditionAndSubtractionParser class.
@@ -10,10 +11,6 @@ import { IParser } from '../../interfaces'
 export class AdditionAndSubtractionParser extends BinaryExpressionParser {
   kinds: PureTokenKind[] = ['plus', 'minus']
 
-  constructor(
-    @inject(ParserToken.Comparison)
-    protected subParser: IParser<Expression>
-  ) {
-    super()
-  }
+  @injectParser(ParserToken.MultiplicationAndDivisionSurplus)
+  protected subParser: IParser<Expression>
 }

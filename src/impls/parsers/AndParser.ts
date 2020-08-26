@@ -1,7 +1,8 @@
 import { BinaryExpressionParser } from '../..'
-import { injectable, inject } from 'tsyringe'
+import { injectable } from 'inversify'
 import { PureTokenKind, ParserToken, Expression } from '../../types'
 import { IParser } from '../../interfaces'
+import { injectParser } from './parserContainer'
 
 /**
  * AndParser class.
@@ -10,9 +11,5 @@ import { IParser } from '../../interfaces'
 export class AndParser extends BinaryExpressionParser {
   kinds: PureTokenKind[] = ['and_and']
 
-  constructor(
-    @inject(ParserToken.Or) protected subParser: IParser<Expression>
-  ) {
-    super()
-  }
+  @injectParser(ParserToken.Equivalent) protected subParser: IParser<Expression>
 }
