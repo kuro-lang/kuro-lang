@@ -2,7 +2,7 @@
 
 ## 🎋 Parsers dependencies
 
-![Parsers dependencies graph](https://github.com/quro-framework/kuro-lang/blob/develop/parsers.drawio.svg)
+<img src="https://github.com/quro-framework/kuro-lang/blob/develop/parsers.drawio.svg" width="400px" />
 
 ## 🔢 Expressions
 
