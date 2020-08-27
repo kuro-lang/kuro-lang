@@ -37,6 +37,7 @@ export abstract class BinaryExpressionParser extends Parser {
       }
 
       if (this.isOperatorToken(peek)) {
+        walker.next()
         const right = this.subParser.parse(source, walker)
 
         expression = {
