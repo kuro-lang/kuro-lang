@@ -27,9 +27,7 @@ export abstract class BinaryExpressionParser extends Parser {
   protected kinds: PureTokenKind[] = []
 
   parse(source: SourceCode, walker: TokenWalker): Node {
-    console.log(`Start ${this.kinds.join(', ')}`)
     let expression = this.subParser.parse(source, walker)
-    console.log(`End ${this.kinds.join(', ')}`)
 
     return loop(({ end }) => {
       const peek = walker.peek()
@@ -39,7 +37,6 @@ export abstract class BinaryExpressionParser extends Parser {
       }
 
       if (this.isOperatorToken(peek)) {
-        console.log(walker.next())
         const right = this.subParser.parse(source, walker)
 
         expression = {
