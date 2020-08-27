@@ -34,7 +34,6 @@ export class GroupAndBlockAndControlsParser extends Parser {
 
   parse(source: SourceCode, walker: TokenWalker): Node {
     const peek = walker.peek()
-    console.log(peek)
 
     if (!peek) {
       throw this.createPeekError(source, walker)
@@ -241,7 +240,16 @@ export class GroupAndBlockAndControlsParser extends Parser {
     source: SourceCode,
     walker: TokenWalker
   ): BlockExpression {
-    walker.next()
+    const leftBraceToken = walker.next()
+
+    if (!leftBraceToken) {
+      throw this.createPeekError(source, walker)
+    }
+
+    if (leftBraceToken.kind !== 'left_brace') {
+      throw this.createUnexpectedError(source, leftBraceToken.loc, '{')
+    }
+
     const statements: Statement[] = []
 
     loop(({ end }) => {
@@ -251,12 +259,14 @@ export class GroupAndBlockAndControlsParser extends Parser {
         throw this.createPeekError(source, walker)
       }
 
-      if (peek.kind === 'right_brace') {
-        end()
-      }
-
       if (peek.kind === 'new_line') {
         walker.next()
+        return
+      }
+
+      if (peek.kind === 'right_brace') {
+        walker.next()
+        return end()
       }
 
       const statement = this.statements.parse(source, walker)
