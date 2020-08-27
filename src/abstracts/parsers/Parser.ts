@@ -36,13 +36,12 @@ export abstract class Parser implements IParser {
     loc: ILoc,
     expected?: string
   ): LocatedError {
+    const got = loc.slice(source.code) || 'end of file'
+
     if (expected) {
-      return new LocatedError(
-        `expected ${expected}, but got ${loc.slice(source.code)}`,
-        loc
-      )
+      return new LocatedError(`expected ${expected}, but got ${got} `, loc)
     }
 
-    return new LocatedError(`unexpected token ${loc.slice(source.code)}`, loc)
+    return new LocatedError(`unexpected token ${got} `, loc)
   }
 }
