@@ -1,18 +1,17 @@
-import { IParser } from '../..'
 import { Node, SourceCode, TokenWalker } from '../../types'
-import { LocatedError, UnexpectedTokenError } from '../errors'
 import { injectable } from 'inversify'
+import { Parser } from '../../abstracts'
 
 /**
  * AtomParser class.
  */
 @injectable()
-export class AtomParser implements IParser {
+export class AtomParser extends Parser {
   parse(source: SourceCode, walker: TokenWalker): Node {
     const token = walker.next()
 
     if (!token) {
-      throw new LocatedError(`peek error`, walker.locTo(-1))
+      throw this.createPeekError(source, walker)
     }
 
     if (token.kind === 'boolean_literal') {
@@ -42,9 +41,6 @@ export class AtomParser implements IParser {
       }
     }
 
-    throw new UnexpectedTokenError(
-      `unexpected token ${token.loc.slice(source.code)}`,
-      token.loc
-    )
+    throw this.createUnexpectedError(source, token.loc)
   }
 }
