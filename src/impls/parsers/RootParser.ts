@@ -10,12 +10,13 @@ import { injectable } from 'inversify'
 import { loop } from '../../utils'
 import { Loc } from '../../classes'
 import { injectParser } from './parserContainer'
+import { Parser } from '../../abstracts'
 
 /**
  * RootParser class.
  */
 @injectable()
-export class RootParser implements IParser {
+export class RootParser extends Parser {
   @injectParser(ParserToken.Statements)
   protected statements: IParser<Statement>
 
@@ -26,8 +27,10 @@ export class RootParser implements IParser {
       const node = this.statements.parse(source, walker)
       statements.push(node)
 
-      if (!walker.value()) {
-        end()
+      const peek = walker.peek()
+
+      if (!peek || peek.kind === 'end_of_file') {
+        return end()
       }
     })
 
