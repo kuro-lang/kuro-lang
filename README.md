@@ -21,6 +21,7 @@ The Kuro language will be available on the following platforms.(🌴 is tree-wal
 
 - Output lexes of the source code.
 - Output AST of the lexes or source code.
+- Debugging helper for token and AST.
 
 ## ⭐️ Example Syntax
 
