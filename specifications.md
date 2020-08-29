@@ -169,6 +169,12 @@ languages[0]
 
 ## Basic expressions
 
+### Pipe
+
+```plain
+a -> b
+```
+
 ### Addition
 
 ```plain
