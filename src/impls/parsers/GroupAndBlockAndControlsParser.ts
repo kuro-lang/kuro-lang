@@ -42,13 +42,17 @@ export class GroupAndBlockAndControlsParser extends Parser {
     if (peek.kind === 'left_paren') {
       walker.next()
       const node = this.expressions.parse(source, walker)
-      const token = walker.value()
+      const token = walker.next()
+
+      if (!token) {
+        throw this.createPeekError(source, walker)
+      }
 
       if (token.kind === 'right_paren') {
         return node
       }
 
-      throw this.createUnexpectedError(source, token.loc)
+      throw this.createUnexpectedError(source, token.loc, ')')
     }
 
     if (peek.kind === 'left_brace') {
