@@ -95,55 +95,6 @@ export class PropertyAccessAndElementAccessAndFunctionCallParser extends Parser 
       }
     }
 
-    if (peek.kind === 'left_paren') {
-      const expression = this.expressions.parse(source, walker)
-      const leftParenToken = walker.next()
-
-      if (!leftParenToken) {
-        throw this.createPeekError(source, walker)
-      }
-
-      if (leftParenToken.kind !== 'left_paren') {
-        throw this.createUnexpectedError(source, leftParenToken.loc, '(')
-      }
-
-      const args: Expression[] = []
-
-      return loop(({ end }) => {
-        const peek = walker.peek()
-
-        if (!peek) {
-          throw this.createPeekError(source, walker)
-        }
-
-        if (peek.kind === 'right_paren') {
-          const rightParenToken = walker.next()
-
-          if (!rightParenToken) {
-            throw this.createPeekError(source, walker)
-          }
-
-          if (rightParenToken.kind !== 'right_paren') {
-            throw this.createUnexpectedError(source, rightParenToken.loc, ')')
-          }
-
-          return end({
-            kind: 'call_expression',
-            expression,
-            arguments: args,
-            loc: expression.loc.merge(rightParenToken.loc),
-          })
-        }
-
-        if (peek.kind === 'new_line' || peek.kind === 'comma') {
-          walker.next()
-        }
-
-        const arg = this.expressions.parse(source, walker)
-        args.push(arg)
-      })
-    }
-
     return this.groupAndBlockAndControls.parse(source, walker)
   }
 }
