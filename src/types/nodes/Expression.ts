@@ -5,6 +5,7 @@ import {
   BlockExpression,
   IfExpression,
   WhileExpression,
+  NumericLiteral,
 } from './expressions'
 
 /**
@@ -15,5 +16,6 @@ export type Expression =
   | BlockExpression
   | Identifier
   | IfExpression
+  | NumericLiteral
   | PrefixExpression
   | WhileExpression
