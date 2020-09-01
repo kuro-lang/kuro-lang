@@ -1,5 +1,6 @@
 export * from './BreakStatement'
 export * from './ConstStatement'
+export * from './ContinueStatement'
 export * from './ExpressionStatement'
 export * from './LetStatement'
 export * from './ReturnStatement'

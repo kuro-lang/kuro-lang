@@ -4,6 +4,7 @@ import {
   ConstStatement,
   ReturnStatement,
   BreakStatement,
+  ContinueStatement,
 } from './statements'
 
 /**
@@ -12,6 +13,7 @@ import {
 export type Statement =
   | BreakStatement
   | ConstStatement
+  | ContinueStatement
   | ExpressionStatement
   | LetStatement
   | ReturnStatement
