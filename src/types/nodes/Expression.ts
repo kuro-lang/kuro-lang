@@ -3,6 +3,7 @@ import {
   BinaryExpression,
   PrefixExpression,
   BlockExpression,
+  IfExpression,
 } from './expressions'
 
 /**
@@ -12,4 +13,5 @@ export type Expression =
   | BinaryExpression
   | BlockExpression
   | Identifier
+  | IfExpression
   | PrefixExpression

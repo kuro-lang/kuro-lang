@@ -1,4 +1,5 @@
 export * from './BinaryExpression'
 export * from './BlockExpression'
 export * from './Identifier'
+export * from './IfExpression'
 export * from './PrefixExpression'
