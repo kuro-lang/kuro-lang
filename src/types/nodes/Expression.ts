@@ -7,6 +7,7 @@ import {
   WhileExpression,
   NumericLiteral,
   StringLiteral,
+  BooleanLiteral,
 } from './expressions'
 
 /**
@@ -15,6 +16,7 @@ import {
 export type Expression =
   | BinaryExpression
   | BlockExpression
+  | BooleanLiteral
   | Identifier
   | IfExpression
   | NumericLiteral
