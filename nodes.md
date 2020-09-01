@@ -6,8 +6,6 @@
   - `<expression> <operator> <expression>`
 - PrefixExpression
   - `<operator> <expression>`
-- BlockExpression
-  - `{ <expression...> }`
 - IfExpression
   - `if <expression> <Block>`
 - WhileExpression
@@ -21,6 +19,8 @@
 
 ## 📝 Statements
 
+- BlockStatement
+  - `{ <statement> }`
 - LetStatement
   - `let <Identifier> = <expression>`
 - ConstStatement
