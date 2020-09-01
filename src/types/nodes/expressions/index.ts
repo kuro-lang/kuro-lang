@@ -1,5 +1,6 @@
 export * from './BinaryExpression'
 export * from './BooleanLiteral'
+export * from './FunctionExpression'
 export * from './Identifier'
 export * from './IfExpression'
 export * from './NumericLiteral'

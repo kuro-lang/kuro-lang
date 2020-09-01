@@ -7,6 +7,7 @@ import {
   NumericLiteral,
   StringLiteral,
   BooleanLiteral,
+  FunctionExpression,
 } from './expressions'
 
 /**
@@ -15,6 +16,7 @@ import {
 export type Expression =
   | BinaryExpression
   | BooleanLiteral
+  | FunctionExpression
   | Identifier
   | IfExpression
   | NumericLiteral
