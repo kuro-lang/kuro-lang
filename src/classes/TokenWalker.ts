@@ -4,7 +4,7 @@ import { Token, SourceCode } from '../types'
 /**
  * TokenWalker class.
  */
-export abstract class TokenWalker extends Walker<Token> {
+export class TokenWalker extends Walker<Token> {
   /**
    * SourceCode object.
    */
