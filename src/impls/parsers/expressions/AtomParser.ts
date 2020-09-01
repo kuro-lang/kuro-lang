@@ -51,7 +51,7 @@ export class AtomParser extends Parser<Expression> {
       return this.parseFunction(walker)
     }
 
-    throw this.createUnexpecctedError(token, walker)
+    throw this.createUnexpectedError(token, walker)
   }
 
   /**
@@ -66,7 +66,7 @@ export class AtomParser extends Parser<Expression> {
     let statement: BlockStatement
 
     if (fn.kind !== 'fn') {
-      throw this.createUnexpecctedError(fn, walker, 'fn')
+      throw this.createUnexpectedError(fn, walker, 'fn')
     }
 
     const next = walker.next()
@@ -128,7 +128,7 @@ export class AtomParser extends Parser<Expression> {
     const parameters: FunctionParameter[] = []
 
     if (leftParen.kind !== 'left_paren') {
-      throw this.createUnexpecctedError(leftParen, walker, '(')
+      throw this.createUnexpectedError(leftParen, walker, '(')
     }
 
     let gotParameter = false
@@ -145,7 +145,7 @@ export class AtomParser extends Parser<Expression> {
       }
 
       if (gotParameter && next.kind !== 'comma') {
-        throw this.createUnexpecctedError(next, walker, ',')
+        throw this.createUnexpectedError(next, walker, ',')
       }
 
       gotParameter = false

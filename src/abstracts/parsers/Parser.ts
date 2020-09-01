@@ -25,7 +25,7 @@ export abstract class Parser<N extends Node> implements IParser<N> {
    * @param loc Token walker.
    * @param expected Expected token kind.
    */
-  protected createUnexpecctedError(
+  protected createUnexpectedError(
     token: Token,
     walker: TokenWalker,
     expected?: string
