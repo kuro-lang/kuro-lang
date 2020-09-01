@@ -3,3 +3,4 @@ export * from './statements'
 
 export * from './Expression'
 export * from './Statement'
+export * from './Program'
