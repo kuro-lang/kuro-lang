@@ -1,4 +1,5 @@
-import { ExpressionNodeBase, Expression, BlockExpression } from '../..'
+import { ExpressionNodeBase, Expression } from '../..'
+import { BlockStatement } from '../statements'
 
 /**
  * IfExpression type.
@@ -10,12 +11,12 @@ export type IfExpression = ExpressionNodeBase<'if_expression'> & {
   condition: Expression
 
   /**
-   * Then expression.
+   * Then statement.
    */
-  then: BlockExpression
+  then: BlockStatement
 
   /**
    * Else expression.
    */
-  else?: IfExpression | BlockExpression
+  else?: IfExpression | BlockStatement
 }
