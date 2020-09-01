@@ -6,6 +6,7 @@ import {
   IfExpression,
   WhileExpression,
   NumericLiteral,
+  StringLiteral,
 } from './expressions'
 
 /**
@@ -18,4 +19,5 @@ export type Expression =
   | IfExpression
   | NumericLiteral
   | PrefixExpression
+  | StringLiteral
   | WhileExpression
