@@ -1,6 +1,7 @@
 import { Identifier } from '.'
+import { BinaryExpression } from './expressions'
 
 /**
  * Expression type.
  */
-export type Expression = Identifier
+export type Expression = BinaryExpression | Identifier
