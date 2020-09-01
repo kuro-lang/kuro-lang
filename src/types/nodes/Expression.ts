@@ -2,7 +2,6 @@ import { Identifier } from '.'
 import {
   BinaryExpression,
   PrefixExpression,
-  BlockExpression,
   IfExpression,
   WhileExpression,
   NumericLiteral,
@@ -15,7 +14,6 @@ import {
  */
 export type Expression =
   | BinaryExpression
-  | BlockExpression
   | BooleanLiteral
   | Identifier
   | IfExpression
