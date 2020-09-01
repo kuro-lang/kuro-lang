@@ -1,7 +1,7 @@
 import { ExpressionStatement } from '.'
-import { LetStatement } from './statements'
+import { LetStatement, ConstStatement } from './statements'
 
 /**
  * Statement type.
  */
-export type Statement = ExpressionStatement | LetStatement
+export type Statement = ConstStatement | ExpressionStatement | LetStatement
