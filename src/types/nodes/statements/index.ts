@@ -1,3 +1,4 @@
+export * from './BreakStatement'
 export * from './ConstStatement'
 export * from './ExpressionStatement'
 export * from './LetStatement'
