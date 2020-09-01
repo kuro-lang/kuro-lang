@@ -3,13 +3,33 @@
  */
 export const ParserToken = {
   /**
-   * AtomParser token.
+   * ProgramParser token.
    *
    * Parse
-   * - `<literal_expression>`
-   * - `(<expression>)`
+   * - `<statement>...`
    */
-  Atom: Symbol('Atom'),
+  Program: Symbol('Program'),
+
+  /**
+   * StatementsParser token.
+   *
+   * Parse
+   * - `<expression>`
+   * - `break <expression>`
+   * - `continue`
+   * - `{ <expression>... }`
+   * - `let <identifier> = <expression>`
+   * - `const <identifier> = <expression>`
+   */
+  Statements: Symbol('Statements'),
+
+  /**
+   * ExpressionsParser token.
+   *
+   * Parse
+   * - `<expression>`
+   */
+  Expressions: Symbol('Expressions'),
 
   /**
    * AssignParser token.
@@ -26,20 +46,20 @@ export const ParserToken = {
   Assign: Symbol('Assign'),
 
   /**
+   * AndParser token.
+   *
+   * Parse
+   * - `<expression> && <expression>`
+   */
+  And: Symbol('And'),
+
+  /**
    * OrParser token.
    *
    * Parse
    * - `<expression> || <expression>`
    */
   Or: Symbol('Or'),
-
-  /**
-   * AndExpressinParser token.
-   *
-   * Parse
-   * - `<expression> && <expression>`
-   */
-  And: Symbol('And'),
 
   /**
    * EquivalentParser token.
@@ -51,7 +71,7 @@ export const ParserToken = {
   Equivalent: Symbol('Equivalent'),
 
   /**
-   * ComparisonParser token.
+   * ComparsionParser token.
    *
    * Parse
    * - `<expression> < <expression>`
@@ -59,29 +79,29 @@ export const ParserToken = {
    * - `<expression> > <expression>`
    * - `<expression> >= <expression>`
    */
-  Comparison: Symbol('Comparison'),
+  Comparsion: Symbol('Comparsion'),
 
   /**
-   * AdditionAndSubtractionParser token.
+   * AddAndSubParser token.
    *
    * Parse
    * - `<expression> + <expression>`
    * - `<expression> - <expression>`
    */
-  AdditionAndSubtraction: Symbol('AdditionAndSubtraction'),
+  AddAndSub: Symbol('AddAndSub'),
 
   /**
-   * MultiplicationAndDivisionParser token.
+   * MulAndDivAndSurplusParser token.
    *
    * Parse
    * - `<expression> * <expression>`
    * - `<expression> / <expression>`
    * - `<expression> % <expression>`
    */
-  MultiplicationAndDivisionSurplus: Symbol('MultiplicationAndDivisionSurplus'),
+  MulAndDivAndSurplus: Symbol('MulAndDivAndSurplus'),
 
   /**
-   * PowerParser token.
+   * PowerParser totken.
    *
    * Parse
    * - `<expression> ** <expression>`
@@ -89,82 +109,36 @@ export const ParserToken = {
   Power: Symbol('Power'),
 
   /**
-   * NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrementParser token.
+   * PrefixParser token.
    *
    * Parse
    * - `! <expression>`
    * - `+ <expression>`
    * - `- <expression>`
-   * - `++ <expression>`
-   * - `-- <expression>`
    */
-  NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrement: Symbol(
-    'NotAndUnaryPlusAndUnaryMinusAndPrefixIncrementAndPrefixDecrement'
-  ),
+  Prefix: Symbol('Prefix'),
 
   /**
-   * PostIncrementAndPostDecrementParser token.
+   * CallParser token.
    *
    * Parse
-   * - `<expression> ++`
-   * - `<expression> --`
+   * - `<expression> (<expression>...)`
    */
-  PostIncrementAndPostDecrement: Symbol('PostIncrementAndPostDecrement'),
-
-  /**
-   * PropertyAccessAndElementAccessAndFunctionCallParser token.
-   *
-   * Parse
-   * - `<expression>.<expression>`
-   * - `<expression>[<expression>]`
-   * - `<expression> (<expression>, <expressions>...)`
-   */
-  PropertyAccessAndElementAccessAndFunctionCall: Symbol(
-    'PropertyAccessAndElementAccessAndFunctionCall'
-  ),
+  Call: Symbol('Call'),
 
   /**
    * GroupParser token.
    *
+   * Parse
    * - `( <expression> )`
    */
   Group: Symbol('Group'),
 
   /**
-   * GroupAndBlockAndControlsParser token.
+   * AtomParser token.
    *
    * Parse
-   * - `( <expression> )`
-   * - `{ <statement>... }`
-   * - `if <expression> <BlockExpression> <else <IfExpression | BlockExpression>?>`
-   * - `while <expression> <BlockExpression>`
-   * - `for <expression> in <expression> <BlockExpression>`
-   * - `loop <expression> <BlockExpression must includes <BreakStatement>>`
+   * - `<literals>`
    */
-  GroupAndBlockAndControls: Symbol('GroupAndBlockAndControls'),
-
-  /**
-   * ExpressionsParser token.
-   *
-   * - `<expression>`
-   */
-  Expressions: Symbol('Expressions'),
-
-  /**
-   * StatementsParser token.
-   *
-   * Parse
-   * - `break <expression?>`
-   * - `continue`
-   * - `<expression>` (ExpressionStatement)
-   */
-  Statements: Symbol('Statements'),
-
-  /**
-   * RootParser token.
-   *
-   * Parse
-   * - <statement>...
-   */
-  Root: Symbol('Root'),
+  Atom: Symbol('Atom'),
 } as const
