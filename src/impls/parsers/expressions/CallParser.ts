@@ -61,6 +61,10 @@ export class CallParser extends Parser<Expression> {
       throw this.createPeekError(walker)
     }
 
+    if (leftParen.kind !== 'left_paren') {
+      throw this.createUnexpectedError(leftParen, walker, '(')
+    }
+
     let token: ReturnType<typeof walker.next>
     do {
       const arg = this.expressions.parse(walker)
