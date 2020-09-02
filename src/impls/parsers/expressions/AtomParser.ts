@@ -131,35 +131,30 @@ export class AtomParser extends Parser<Expression> {
       throw this.createUnexpectedError(leftParen, walker, '(')
     }
 
-    let gotParameter = false
+    let token: ReturnType<typeof walker.next>
+    do {
+      const parameter = walker.next()
 
-    loop(({ end }) => {
-      const next = walker.next()
-
-      if (!next) {
+      if (!parameter) {
         throw this.createPeekError(walker)
       }
 
-      if (next.kind === 'right_paren') {
-        return end()
+      if (parameter.kind !== 'identifier') {
+        throw this.createUnexpectedError(parameter, walker, 'identifier')
       }
 
-      if (gotParameter && next.kind !== 'comma') {
-        throw this.createUnexpectedError(next, walker, ',')
-      }
+      parameters.push({ identifier: { ...parameter } })
 
-      gotParameter = false
+      token = walker.next()
+    } while (token && token.kind === 'comma')
 
-      if (next.kind === 'identifier') {
-        parameters.push({
-          identifier: next,
-        })
+    if (!token) {
+      throw this.createPeekError(walker)
+    }
 
-        gotParameter = true
-
-        return
-      }
-    })
+    if (token.kind !== 'right_paren') {
+      throw this.createUnexpectedError(token, walker, ')')
+    }
 
     return parameters
   }
