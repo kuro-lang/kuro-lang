@@ -11,7 +11,6 @@ import {
 import { injectable } from 'inversify'
 import { injectParser } from '../parserContainer'
 import { IParser } from '../../../interfaces'
-import { loop } from '../../../utils'
 
 /**
  * AtomParser class.
