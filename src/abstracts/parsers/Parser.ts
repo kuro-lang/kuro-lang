@@ -2,10 +2,12 @@ import { Node, Token } from '../../types'
 import { IParser } from '../..'
 import { TokenWalker } from '../../classes'
 import { LocatedError } from '../../impls'
+import { injectable } from 'inversify'
 
 /**
  * Parser class.
  */
+@injectable()
 export abstract class Parser<N extends Node> implements IParser<N> {
   abstract parse(walker: TokenWalker): N
 
