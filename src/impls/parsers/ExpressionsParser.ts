@@ -1,9 +1,8 @@
-import { Parser, Expression } from '../../..'
 import { injectable } from 'inversify'
 import { injectParser } from './parserContainer'
 import { IParser } from '../../interfaces'
 import { TokenWalker } from '../../classes'
-import { ParserToken } from '../..'
+import { ParserToken, Parser, Expression } from '../..'
 
 /**
  * ExpressionParser class.
