@@ -1,9 +1,9 @@
-import { Parser, Expression } from '../../..'
+import { Parser, Expression } from '../..'
 import { injectable } from 'inversify'
-import { injectParser } from '../parserContainer'
-import { ParserToken, TokenKind, Token } from '../../../types'
-import { IParser } from '../../../interfaces'
-import { TokenWalker } from '../../../classes'
+import { injectParser } from './parserContainer'
+import { ParserToken, TokenKind, Token } from '../../types'
+import { IParser } from '../../interfaces'
+import { TokenWalker } from '../../classes'
 
 /**
  * PrefixParser class.

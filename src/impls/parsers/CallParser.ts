@@ -1,10 +1,10 @@
 import { injectable } from 'inversify'
-import { injectParser } from '../parserContainer'
-import { ParserToken, Expression } from '../../../types'
-import { IParser } from '../../../interfaces'
-import { TokenWalker } from '../../../classes'
-import { loop } from '../../../utils'
-import { Parser } from '../../../abstracts'
+import { injectParser } from './parserContainer'
+import { ParserToken, Expression } from '../../types'
+import { IParser } from '../../interfaces'
+import { TokenWalker } from '../../classes'
+import { loop } from '../../utils'
+import { Parser } from '../../abstracts'
 
 /**
  * CallParser class.

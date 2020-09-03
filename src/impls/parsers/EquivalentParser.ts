@@ -1,8 +1,8 @@
-import { BinaryExpressionParser } from '../../..'
+import { BinaryExpressionParser } from '../..'
 import { injectable } from 'inversify'
-import { injectParser } from '../parserContainer'
-import { ParserToken, Expression, PureTokenKind } from '../../../types'
-import { IParser } from '../../../interfaces'
+import { injectParser } from './parserContainer'
+import { ParserToken, Expression, PureTokenKind } from '../../types'
+import { IParser } from '../../interfaces'
 
 /**
  * EquivalentParser class.

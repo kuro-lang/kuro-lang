@@ -1,4 +1,4 @@
-import { Parser, Expression } from '../../..'
+import { Parser, Expression } from '../..'
 import { injectable } from 'inversify'
 import { injectParser } from './parserContainer'
 import { IParser } from '../../interfaces'

@@ -1,5 +1,5 @@
-import { Parser } from '../../..'
-import { TokenWalker } from '../../../classes'
+import { Parser } from '../..'
+import { TokenWalker } from '../../classes'
 import {
   Expression,
   ParserToken,
@@ -7,10 +7,10 @@ import {
   Identifier,
   FunctionParameter,
   BlockStatement,
-} from '../../../types'
+} from '../../types'
 import { injectable } from 'inversify'
-import { injectParser } from '../parserContainer'
-import { IParser } from '../../../interfaces'
+import { injectParser } from './parserContainer'
+import { IParser } from '../../interfaces'
 
 /**
  * AtomParser class.
