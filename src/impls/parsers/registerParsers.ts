@@ -1,23 +1,21 @@
 import { ParserToken, IParser } from '../..'
-import {
-  parserContainer,
-  ProgramParser,
-  StatementsParser,
-  ExpressionsParser,
-  AssignParser,
-  OrParser,
-  EquivalentParser,
-  AddAndSubParser,
-  MulAndDivAndSurplusParser,
-  PowerParser,
-  PrefixParser,
-  CallParser,
-  GroupParser,
-  AtomParser,
-  AndParser,
-} from '.'
+import { parserContainer } from '.'
 import { Node } from '../../types'
 import { Comparsion } from './ComparsionParser'
+import { ProgramParser } from './ProgramParser'
+import { StatementsParser } from './StatementsParser'
+import { ExpressionsParser } from './ExpressionsParser'
+import { AssignParser } from './AssignParser'
+import { OrParser } from './OrParser'
+import { AndParser } from './AndParser'
+import { EquivalentParser } from './EquivalentParser'
+import { AddAndSubParser } from './AddAndSubParser'
+import { MulAndDivAndSurplusParser } from './MulAndDivAndSurplusParser'
+import { PowerParser } from './PowerParser'
+import { PrefixParser } from './PrefixParser'
+import { CallParser } from './CallParser'
+import { GroupParser } from './GroupParser'
+import { AtomParser } from './AtomParser'
 
 /**
  * Register a parser by given key and given class.
