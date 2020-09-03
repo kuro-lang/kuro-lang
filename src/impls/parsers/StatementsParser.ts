@@ -1,10 +1,9 @@
 import { Parser, Expression } from '../..'
 import { injectable } from 'inversify'
 import { injectParser } from './parserContainer'
-import { ParserToken, Statement } from '../../types'
+import { ParserToken, Statement, Identifier } from '../../types'
 import { IParser } from '../../interfaces'
 import { TokenWalker } from '../../classes'
-import { Identifier } from '../../../types'
 import { loop } from '../../utils'
 
 /**
