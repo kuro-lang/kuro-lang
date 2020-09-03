@@ -1,5 +1,6 @@
 export * from './parserContainer'
 
+export * from './ProgramParser'
 export * from './StatementsParser'
 export * from './ExpressionsParser'
 export * from './AssignParser'
