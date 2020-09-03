@@ -1,5 +1,5 @@
 import { IParser, TokenWalker } from '../..'
-import { PureTokenKind, Token, PureToken, Node, Expression } from '../../types'
+import { PureTokenKind, Token, PureToken, Expression } from '../../types'
 import { loop, useEquals } from '../../utils'
 import { Parser } from './Parser'
 import { injectable } from 'inversify'
