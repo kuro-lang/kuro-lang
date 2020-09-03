@@ -11,6 +11,7 @@ import {
   LoopToken,
   WhileToken,
   UseToken,
+  ReturnToken,
 } from './reserveds'
 
 /*
@@ -27,5 +28,6 @@ export type ReservedToken =
   | InToken
   | LetToken
   | LoopToken
+  | ReturnToken
   | UseToken
   | WhileToken
