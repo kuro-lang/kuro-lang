@@ -15,3 +15,5 @@ export * from './PrefixParser'
 export * from './CallParser'
 export * from './GroupParser'
 export * from './AtomParser'
+
+import './registerParsers'
