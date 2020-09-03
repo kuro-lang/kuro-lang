@@ -29,6 +29,7 @@ import {
   RightBraceToken,
   RightBracketToken,
   RightParenToken,
+  SemiColon,
   SlashEqualsToken,
   SlashToken,
   AndAndToken,
@@ -75,5 +76,6 @@ export type SymbolToken =
   | RightBraceToken
   | RightBracketToken
   | RightParenToken
+  | SemiColon
   | SlashEqualsToken
   | SlashToken
