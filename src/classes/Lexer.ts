@@ -72,6 +72,7 @@ export class Lexer extends Walker<string> implements ILexer {
       make('}', 'right_brace'),
       make(']', 'right_bracket'),
       make(')', 'right_paren'),
+      make(';', 'semi_colon'),
       make('/', 'slash'),
       make('/=', 'slash_equals'),
       make('use', 'use'),
