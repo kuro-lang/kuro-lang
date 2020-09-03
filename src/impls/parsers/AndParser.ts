@@ -5,10 +5,10 @@ import { ParserToken, Expression, PureTokenKind } from '../../types'
 import { IParser } from '../../interfaces'
 
 /**
- * AndParsre class.
+ * AndParser class.
  */
 @injectable()
-export class AndParsre extends BinaryExpressionParser {
+export class AndParser extends BinaryExpressionParser {
   @injectParser(ParserToken.Or) subParser: IParser<Expression>
 
   kinds: PureTokenKind[] = ['and_and']
