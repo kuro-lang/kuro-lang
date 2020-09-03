@@ -14,5 +14,5 @@ export type LetStatement = StatementNodeBase<'let_statement'> & {
   /**
    * Initializer.
    */
-  initializer: Expression
+  initializer?: Expression
 }
