@@ -171,22 +171,4 @@ export class StatementsParser extends Parser<Statement> {
       loc: expression.loc,
     }
   }
-
-  /**
-   * Forward walker to primary token.
-   *
-   * @param walker Token walker.
-   */
-  protected forwardToPrimaryToken(
-    walker: TokenWalker
-  ): ReturnType<TokenWalker['peek']> {
-    let peek = walker.peek()
-
-    while (peek && (peek.kind === 'semi_colon' || peek.kind === 'new_line')) {
-      walker.next()
-      peek = walker.peek()
-    }
-
-    return peek
-  }
 }
