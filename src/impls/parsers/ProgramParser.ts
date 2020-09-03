@@ -1,10 +1,15 @@
-import { Parser, Program, TokenWalker, Statement } from '../..'
 import { injectable } from 'inversify'
-import { Loc } from '../../classes'
-import { loop } from '../../utils'
-import { injectParser } from './parserContainer'
-import { ParserToken } from '../../types'
-import { IParser } from '../../interfaces'
+import {
+  Parser,
+  Program,
+  ParserToken,
+  IParser,
+  Statement,
+  TokenWalker,
+  loop,
+  Loc,
+} from '../..'
+import { injectParser } from '.'
 
 /**
  * ProgramParser class.

@@ -1,14 +1,18 @@
-import { BinaryExpressionParser } from '../../..'
 import { injectable } from 'inversify'
-import { injectParser } from '../parserContainer'
-import { ParserToken, Expression, PureTokenKind } from '../../../types'
-import { IParser } from '../../../interfaces'
+import {
+  BinaryExpressionParser,
+  ParserToken,
+  IParser,
+  Expression,
+  PureTokenKind,
+} from '../..'
+import { injectParser } from '.'
 
 /**
- * Comparsion class.
+ * ComparsionParser class.
  */
 @injectable()
-export class Comparsion extends BinaryExpressionParser {
+export class ComparsionParser extends BinaryExpressionParser {
   @injectParser(ParserToken.AddAndSub) subParser: IParser<Expression>
 
   kinds: PureTokenKind[] = [
