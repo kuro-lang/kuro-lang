@@ -17,8 +17,7 @@ export class StatementsParser extends Parser<Statement> {
   @injectParser(ParserToken.Expressions) expressions: IParser<Expression>
 
   parse(walker: TokenWalker): Statement {
-    const peek = walker.peek()
-    this.forwardToPrimaryToken(walker)
+    const peek = this.forwardToPrimaryToken(walker)
 
     if (!peek) {
       throw this.createPeekError(walker)
