@@ -23,7 +23,7 @@ export class ProgramParser extends Parser<Program> {
     loop(({ end }) => {
       const peek = this.forwardToPrimaryToken(walker)
 
-      if (!peek) {
+      if (!peek || peek.kind === 'end_of_file') {
         return end()
       }
 
