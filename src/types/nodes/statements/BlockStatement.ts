@@ -8,5 +8,5 @@ export type BlockStatement = ExpressionNodeBase<'block_statement'> & {
   /**
    * Statements.
    */
-  statements: Statement[]
+  body: Statement[]
 }

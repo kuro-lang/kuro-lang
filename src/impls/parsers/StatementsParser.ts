@@ -164,7 +164,7 @@ export class StatementsParser extends Parser<Statement> {
 
       return {
         kind: 'block_statement',
-        statements,
+        body: statements,
         loc: Loc.fromCollection(statements, ({ loc }) => loc),
       }
     }
