@@ -61,52 +61,52 @@ export class AtomParser extends Parser<Expression> {
   protected parseFunction(walker: TokenWalker): FunctionExpression {
     const fn = walker.value()
     let identifier: Identifier | undefined
-    let parameters: FunctionParameter[]
-    let statement: BlockStatement
+    let parameters: FunctionParameter[] = []
 
     if (fn.kind !== 'fn') {
       throw this.createUnexpectedError(fn, walker, 'fn')
     }
 
-    const next = walker.next()
+    let peek = walker.peek()
 
-    if (!next) {
+    if (!peek) {
       throw this.createPeekError(walker)
     }
 
-    if (next.kind === 'identifier') {
-      // fn <identifier> () {}
-      identifier = next
+    if (peek.kind === 'identifier') {
+      /**
+       * fn <identifier> {}
+       * fn <identifier> (<parameter>...) {}
+       */
+      walker.next()
+      identifier = peek
 
-      const peek = walker.peek()
-
-      if (!peek) {
-        throw this.createPeekError(walker)
-      }
-
-      if (peek.kind === 'left_paren') {
-        // fn <identifier> {}
-        walker.next()
-        parameters = this.parseFunctionParameters(walker)
-      }
-
-      statement = this.blockStatement.parse(walker)
-    } else if (next.kind === 'left_paren') {
-      // fn () {}
-      const peek = walker.peek()
+      peek = walker.peek()
 
       if (!peek) {
         throw this.createPeekError(walker)
       }
 
       if (peek.kind === 'left_paren') {
-        // fn {}
         walker.next()
         parameters = this.parseFunctionParameters(walker)
       }
+    } else if (peek.kind === 'left_brace') {
+      /**
+       * fn {}
+       */
+    } else if (peek.kind === 'left_paren') {
+      /**
+       * fn (<parameter>...) {}
+       */
+      walker.next()
 
-      statement = this.blockStatement.parse(walker)
+      parameters = this.parseFunctionParameters(walker)
+    } else {
+      throw this.createUnexpectedError(peek, walker, 'identifier or { or (')
     }
+
+    const statement = this.blockStatement.parse(walker)
 
     return {
       kind: 'function_expression',
@@ -130,7 +130,13 @@ export class AtomParser extends Parser<Expression> {
       throw this.createUnexpectedError(leftParen, walker, '(')
     }
 
-    let token: ReturnType<typeof walker.next>
+    let token = walker.peek()
+
+    if (token && token.kind === 'right_paren') {
+      walker.next()
+      return parameters
+    }
+
     do {
       const parameter = walker.next()
 
