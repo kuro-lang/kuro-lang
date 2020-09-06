@@ -15,8 +15,25 @@ export class IdentifierRule implements ILexerRule {
    */
   identifierChar = /[a-zA-Z0-9]|_/
 
+  /**
+   * Ignore strings.
+   */
+  ignore: string[] = []
+
+  /**
+   * IdentifierRule constructor.
+   *
+   * @param ignore Ignore strings.
+   */
+  constructor(ignore: string[] = []) {
+    this.ignore = ignore
+  }
+
   validate(walker: IWalker<string>): boolean {
-    return this.prefix.test(walker.value())
+    return (
+      this.prefix.test(walker.value()) &&
+      this.ignore.every((s) => !walker.match(s))
+    )
   }
 
   execute(walker: IWalker<string>): IdentifierToken {
