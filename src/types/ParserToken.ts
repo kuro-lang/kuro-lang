@@ -135,6 +135,17 @@ export const ParserToken = {
   Group: Symbol('Group'),
 
   /**
+   * ControlsParser token.
+   *
+   * Parse
+   * - `if <expression> <block>`
+   * - `if <expression> <block> else <expression>`
+   * - `while <block>`
+   * - `loop <block>`
+   */
+  Controls: Symbol('Controls'),
+
+  /**
    * AtomParser token.
    *
    * Parse
