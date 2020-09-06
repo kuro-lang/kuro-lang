@@ -26,6 +26,20 @@ export class Lexer extends Walker<string> implements ILexer {
     new BooleanLiteralLexerRule(),
     new NumericLiteralRule(),
     new StringLiteralRule(),
+    new IdentifierRule([
+      'break ',
+      'const ',
+      'continue ',
+      'else ',
+      'fn ',
+      'for ',
+      'if ',
+      'in ',
+      'let ',
+      'loop ',
+      'use ',
+      'while ',
+    ]),
     new PatternRule((make) => [
       make('&&', 'and_and'),
       make('*', 'asterisk'),
@@ -79,7 +93,6 @@ export class Lexer extends Walker<string> implements ILexer {
       make('while', 'while'),
       make('\n', 'new_line'),
     ]),
-    new IdentifierRule(),
   ]
 
   /**
