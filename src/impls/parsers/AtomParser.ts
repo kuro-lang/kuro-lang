@@ -50,7 +50,7 @@ export class AtomParser extends Parser<Expression> {
       return this.parseFunction(walker)
     }
 
-    throw this.createUnexpectedError(token, walker)
+    throw this.createUnexpectedError(token, walker, 'expression')
   }
 
   /**
