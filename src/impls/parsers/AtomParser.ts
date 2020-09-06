@@ -112,7 +112,7 @@ export class AtomParser extends Parser<Expression> {
       kind: 'function_expression',
       identifier,
       parameters,
-      statement,
+      body: statement,
       loc: fn.loc.merge(statement.loc),
     }
   }

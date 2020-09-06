@@ -29,5 +29,5 @@ export type FunctionExpression = ExpressionNodeBase<'function_expression'> & {
   /**
    * Statement.
    */
-  statement: BlockStatement
+  body: BlockStatement
 }
