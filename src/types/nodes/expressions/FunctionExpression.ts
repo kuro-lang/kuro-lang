@@ -24,7 +24,7 @@ export type FunctionExpression = ExpressionNodeBase<'function_expression'> & {
   /**
    * Parameters.
    */
-  parameters?: FunctionParameter[]
+  parameters: FunctionParameter[]
 
   /**
    * Statement.
