@@ -16,6 +16,7 @@ import { PrefixParser } from './PrefixParser'
 import { CallParser } from './CallParser'
 import { GroupParser } from './GroupParser'
 import { AtomParser } from './AtomParser'
+import { ControlsParser } from './ControlsParser'
 
 /**
  * Register a parser by given key and given class.
@@ -44,4 +45,5 @@ registerParser('Power', PowerParser)
 registerParser('Prefix', PrefixParser)
 registerParser('Call', CallParser)
 registerParser('Group', GroupParser)
+registerParser('Controls', ControlsParser)
 registerParser('Atom', AtomParser)

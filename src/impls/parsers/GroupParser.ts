@@ -16,9 +16,9 @@ export class GroupParser extends Parser<Expression> {
   @injectParser(ParserToken.Expressions) expressions: IParser<Expression>
 
   /**
-   * AtomParser.
+   * ControlsParser.
    */
-  @injectParser(ParserToken.Atom) atom: IParser<Expression>
+  @injectParser(ParserToken.Controls) controls: IParser<Expression>
 
   parse(walker: TokenWalker): Expression {
     const peek = walker.peek()
@@ -44,6 +44,6 @@ export class GroupParser extends Parser<Expression> {
       throw this.createUnexpectedError(token, walker, ')')
     }
 
-    return this.atom.parse(walker)
+    return this.controls.parse(walker)
   }
 }
