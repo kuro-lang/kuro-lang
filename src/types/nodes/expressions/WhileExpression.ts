@@ -13,5 +13,5 @@ export type WhileExpression = ExpressionNodeBase<'while_expression'> & {
   /**
    * Statement.
    */
-  statement: BlockStatement
+  body: BlockStatement
 }
