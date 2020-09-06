@@ -3,7 +3,7 @@ import { injectable } from 'inversify'
 import { injectParser } from './parserContainer'
 import { ParserToken, Statement, Identifier } from '../../types'
 import { IParser } from '../../interfaces'
-import { TokenWalker } from '../../classes'
+import { TokenWalker, Loc } from '../../classes'
 import { loop } from '../../utils'
 
 /**
@@ -159,6 +159,14 @@ export class StatementsParser extends Parser<Statement> {
         const statement = this.parse(walker)
         statements.push(statement)
       })
+
+      walker.next()
+
+      return {
+        kind: 'block_statement',
+        statements,
+        loc: Loc.fromCollection(statements, ({ loc }) => loc),
+      }
     }
 
     const expression = this.expressions.parse(walker)
