@@ -17,6 +17,7 @@ import { CallParser } from './CallParser'
 import { GroupParser } from './GroupParser'
 import { AtomParser } from './AtomParser'
 import { ControlsParser } from './ControlsParser'
+import { BlockParser } from './BlockParser'
 
 /**
  * Register a parser by given key and given class.
@@ -32,6 +33,7 @@ const registerParser = <N extends Node>(
 }
 
 registerParser('Program', ProgramParser)
+registerParser('Block', BlockParser)
 registerParser('Statements', StatementsParser)
 registerParser('Expressions', ExpressionsParser)
 registerParser('Assign', AssignParser)
