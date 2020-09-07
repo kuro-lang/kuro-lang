@@ -11,6 +11,14 @@ export const ParserToken = {
   Program: Symbol('Program'),
 
   /**
+   * BlockParser token.
+   *
+   * Parse
+   * - `{ <statement>... }`
+   */
+  Block: Symbol('Block'),
+
+  /**
    * StatementsParser token.
    *
    * Parse
