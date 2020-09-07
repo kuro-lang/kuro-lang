@@ -47,9 +47,14 @@ export class StatementsParser extends Parser<Statement> {
     }
 
     if (peek.kind === 'return') {
-      const next = walker.next()
+      walker.next()
+      const returnPeek = walker.peek()
 
-      if (!next || next.kind === 'semi_colon' || next.kind === 'new_line') {
+      if (
+        !returnPeek ||
+        returnPeek.kind === 'semi_colon' ||
+        returnPeek.kind === 'new_line'
+      ) {
         return {
           kind: 'return_statement',
           loc: peek.loc,
@@ -61,6 +66,7 @@ export class StatementsParser extends Parser<Statement> {
 
       return {
         kind: 'return_statement',
+        expression,
         loc: peek.loc.merge(expression.loc),
       }
     }
