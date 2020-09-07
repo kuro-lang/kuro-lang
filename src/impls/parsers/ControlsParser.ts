@@ -37,13 +37,13 @@ export class ControlsParser extends Parser<Expression> {
       throw this.createPeekError(walker)
     }
 
-    // if (peek.kind === 'if') {
-    //   return this.parseIf(walker)
-    // }
+    if (peek.kind === 'if') {
+      return this.parseIf(walker)
+    }
 
-    // if (peek.kind === 'while') {
-    //   return this.parseWhile(walker)
-    // }
+    if (peek.kind === 'while') {
+      return this.parseWhile(walker)
+    }
 
     return this.atom.parse(walker)
   }
