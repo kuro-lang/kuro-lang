@@ -127,12 +127,12 @@ export const ParserToken = {
   Prefix: Symbol('Prefix'),
 
   /**
-   * CallParser token.
+   * CallAndAccessParser token.
    *
    * Parse
    * - `<expression> (<expression>...)`
    */
-  Call: Symbol('Call'),
+  CallAndAccess: Symbol('CallAndAccess'),
 
   /**
    * GroupParser token.

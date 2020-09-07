@@ -13,7 +13,7 @@ export class PrefixParser extends Parser<Expression> {
   /**
    * CallParser.
    */
-  @injectParser(ParserToken.Call) call: IParser<Expression>
+  @injectParser(ParserToken.CallAndAccess) call: IParser<Expression>
 
   readonly prefixes: TokenKind[] = ['plus', 'minus', 'exclamation']
 
