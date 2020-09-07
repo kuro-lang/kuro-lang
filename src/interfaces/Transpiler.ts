@@ -1,13 +1,13 @@
-import { SourceCode } from '../types'
+import { Node } from '../types'
 
 /**
  * Transpiler interface.
  */
 export interface ITranspiler {
   /**
-   * Transpile given source code.
+   * Transpile given AST node.
    *
-   * @param input Source code.
+   * @param node AST Node.
    */
-  transpile(input: SourceCode): SourceCode
+  transpile(node: Node): string
 }
