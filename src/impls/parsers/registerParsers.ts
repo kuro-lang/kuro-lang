@@ -13,7 +13,7 @@ import { AddAndSubParser } from './AddAndSubParser'
 import { MulAndDivAndSurplusParser } from './MulAndDivAndSurplusParser'
 import { PowerParser } from './PowerParser'
 import { PrefixParser } from './PrefixParser'
-import { CallParser } from './CallParser'
+import { CallAndAccessParser } from './CallAndAccessParser'
 import { GroupParser } from './GroupParser'
 import { AtomParser } from './AtomParser'
 import { ControlsParser } from './ControlsParser'
@@ -45,7 +45,7 @@ registerParser('AddAndSub', AddAndSubParser)
 registerParser('MulAndDivAndSurplus', MulAndDivAndSurplusParser)
 registerParser('Power', PowerParser)
 registerParser('Prefix', PrefixParser)
-registerParser('CallAndAccess', CallParser)
+registerParser('CallAndAccess', CallAndAccessParser)
 registerParser('Group', GroupParser)
 registerParser('Controls', ControlsParser)
 registerParser('Atom', AtomParser)

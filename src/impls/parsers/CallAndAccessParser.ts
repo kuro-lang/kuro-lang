@@ -1,16 +1,16 @@
 import { injectable } from 'inversify'
 import { injectParser } from './parserContainer'
-import { ParserToken, Expression } from '../../types'
+import { ParserToken, Expression, Identifier } from '../../types'
 import { IParser } from '../../interfaces'
 import { TokenWalker } from '../../classes'
 import { loop } from '../../utils'
 import { Parser } from '../../abstracts'
 
 /**
- * CallParser class.
+ * CallAndAccessParser class.
  */
 @injectable()
-export class CallParser extends Parser<Expression> {
+export class CallAndAccessParser extends Parser<Expression> {
   /**
    * GroupParser.
    */
@@ -41,6 +41,32 @@ export class CallParser extends Parser<Expression> {
           expression,
           arguments: args,
           loc: peek.loc.merge(rightParen.loc),
+        }
+      } else if (peek.kind == 'dot') {
+        walker.next()
+        const identifierToken = walker.next()
+
+        if (!identifierToken) {
+          throw this.createPeekError(walker)
+        }
+
+        if (identifierToken.kind !== 'identifier') {
+          throw this.createUnexpectedError(
+            identifierToken,
+            walker,
+            'identifier'
+          )
+        }
+
+        const identifier: Identifier = {
+          ...identifierToken,
+        }
+
+        expression = {
+          kind: 'property_access_expression',
+          expression,
+          identifier,
+          loc: peek.loc.merge(identifier.loc),
         }
       } else {
         return end(expression)
