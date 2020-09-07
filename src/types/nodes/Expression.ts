@@ -9,6 +9,7 @@ import {
   BooleanLiteral,
   FunctionExpression,
   CallExpression,
+  PropertyAccessExpression,
 } from './expressions'
 
 /**
@@ -23,5 +24,6 @@ export type Expression =
   | IfExpression
   | NumericLiteral
   | PrefixExpression
+  | PropertyAccessExpression
   | StringLiteral
   | WhileExpression
