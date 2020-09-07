@@ -76,6 +76,7 @@ export class StatementsParser extends Parser<Statement> {
     }
 
     if (peek.kind === 'let') {
+      walker.next()
       const identifierToken = walker.next()
 
       if (!identifierToken) {
@@ -111,6 +112,7 @@ export class StatementsParser extends Parser<Statement> {
     }
 
     if (peek.kind === 'const') {
+      walker.next()
       const identifierToken = walker.next()
 
       if (!identifierToken) {
@@ -130,7 +132,7 @@ export class StatementsParser extends Parser<Statement> {
         throw this.createPeekError(walker)
       }
 
-      if (equals.kind === 'equals') {
+      if (equals.kind !== 'equals') {
         throw this.createUnexpectedError(equals, walker, '=')
       }
 
