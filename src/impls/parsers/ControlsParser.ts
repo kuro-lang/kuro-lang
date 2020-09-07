@@ -101,9 +101,7 @@ export class ControlsParser extends Parser<Expression> {
       peek = walker.peek()
       let elseStatement: IfExpression['else']
 
-      console.log(peek)
       if (peek && peek.kind === 'if') {
-        console.log('else-if')
         elseStatement = this.parseIf(walker)
       } else {
         elseStatement = this.block.parse(walker)

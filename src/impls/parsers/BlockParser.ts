@@ -17,8 +17,6 @@ export class BlockParser extends Parser<BlockStatement> {
 
   parse(walker: TokenWalker): BlockStatement {
     const leftBraceToken = walker.next()
-    console.log('block')
-    console.log(leftBraceToken)
 
     if (!leftBraceToken) {
       throw this.createPeekError(walker)
@@ -41,7 +39,6 @@ export class BlockParser extends Parser<BlockStatement> {
         return end()
       }
 
-      console.log(peek)
       const statement = this.statements.parse(walker)
       statements.push(statement)
     })

@@ -148,7 +148,6 @@ export class StatementsParser extends Parser<Statement> {
     }
 
     if (peek.kind === 'left_brace') {
-      console.log('before block')
       return this.block.parse(walker)
     }
 
