@@ -1,10 +1,9 @@
 import { Parser, Expression } from '../..'
 import { injectable } from 'inversify'
 import { injectParser } from './parserContainer'
-import { ParserToken, Statement, Identifier } from '../../types'
+import { ParserToken, Statement, Identifier, BlockStatement } from '../../types'
 import { IParser } from '../../interfaces'
-import { TokenWalker, Loc } from '../../classes'
-import { loop } from '../../utils'
+import { TokenWalker } from '../../classes'
 
 /**
  * StatementsParser class.
@@ -15,6 +14,11 @@ export class StatementsParser extends Parser<Statement> {
    * ExpressionsParser.
    */
   @injectParser(ParserToken.Expressions) expressions: IParser<Expression>
+
+  /**
+   * BlockParser.
+   */
+  @injectParser(ParserToken.Block) block: IParser<BlockStatement>
 
   parse(walker: TokenWalker): Statement {
     const peek = this.forwardToPrimaryToken(walker)
@@ -142,31 +146,8 @@ export class StatementsParser extends Parser<Statement> {
     }
 
     if (peek.kind === 'left_brace') {
-      walker.next()
-      const statements: Statement[] = []
-
-      loop(({ end }) => {
-        const peek = this.forwardToPrimaryToken(walker)
-
-        if (!peek) {
-          throw this.createPeekError(walker)
-        }
-
-        if (peek.kind === 'right_brace') {
-          return end()
-        }
-
-        const statement = this.parse(walker)
-        statements.push(statement)
-      })
-
-      walker.next()
-
-      return {
-        kind: 'block_statement',
-        body: statements,
-        loc: Loc.fromCollection(statements, ({ loc }) => loc),
-      }
+      console.log('before block')
+      return this.block.parse(walker)
     }
 
     const expression = this.expressions.parse(walker)

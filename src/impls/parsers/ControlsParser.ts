@@ -16,9 +16,9 @@ import { injectable } from 'inversify'
 @injectable()
 export class ControlsParser extends Parser<Expression> {
   /**
-   * StatementsParser.
+   * BlockParser.
    */
-  @injectParser(ParserToken.Statements) block: IParser<BlockStatement>
+  @injectParser(ParserToken.Block) block: IParser<BlockStatement>
 
   /**
    * ExpressionsParser.
@@ -37,13 +37,13 @@ export class ControlsParser extends Parser<Expression> {
       throw this.createPeekError(walker)
     }
 
-    if (peek.kind === 'if') {
-      return this.parseIf(walker)
-    }
+    // if (peek.kind === 'if') {
+    //   return this.parseIf(walker)
+    // }
 
-    if (peek.kind === 'while') {
-      return this.parseWhile(walker)
-    }
+    // if (peek.kind === 'while') {
+    //   return this.parseWhile(walker)
+    // }
 
     return this.atom.parse(walker)
   }
