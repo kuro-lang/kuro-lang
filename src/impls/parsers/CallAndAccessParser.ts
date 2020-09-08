@@ -68,6 +68,25 @@ export class CallAndAccessParser extends Parser<Expression> {
           identifier,
           loc: peek.loc.merge(identifier.loc),
         }
+      } else if (peek.kind === 'left_bracket') {
+        walker.next()
+        const index = this.expressions.parse(walker)
+        const rightBracket = walker.next()
+
+        if (!rightBracket) {
+          throw this.createPeekError(walker)
+        }
+
+        if (rightBracket.kind !== 'right_bracket') {
+          throw this.createUnexpectedError(rightBracket, walker, ']')
+        }
+
+        expression = {
+          kind: 'element_access_expression',
+          expression,
+          index,
+          loc: peek.loc.merge(rightBracket.loc),
+        }
       } else {
         return end(expression)
       }
