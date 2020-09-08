@@ -40,6 +40,14 @@ export const ParserToken = {
   Expressions: Symbol('Expressions'),
 
   /**
+   * PipeParser token.
+   *
+   * Parse
+   * - `<expression> -> <expression>`
+   */
+  Pipe: Symbol('Pipe'),
+
+  /**
    * AssignParser token.
    *
    * Parse
