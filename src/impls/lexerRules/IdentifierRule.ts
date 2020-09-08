@@ -30,23 +30,26 @@ export class IdentifierRule implements ILexerRule {
   }
 
   validate(walker: IWalker<string>): boolean {
-    return (
-      this.prefix.test(walker.value()) &&
-      this.ignore.some((s) => {
-        if (!walker.match(s)) {
-          return false
-        }
+    const isValidPrefix = this.prefix.test(walker.value())
 
-        const sliced = walker.slice(
-          walker.index() + s.length,
-          walker.index() + s.length + 1
-        )
+    if (!isValidPrefix) {
+      return false
+    }
 
-        const nextChar = sliced.join()
+    const ignoreMatch = this.ignore.find((i) => walker.match(i))
 
-        return this.identifierChar.test(nextChar)
-      })
-    )
+    if (!ignoreMatch) {
+      return true
+    }
+
+    const nextChar = walker
+      .slice(
+        walker.index() + ignoreMatch.length,
+        walker.index() + ignoreMatch.length + 1
+      )
+      .join()
+
+    return this.identifierChar.test(nextChar)
   }
 
   execute(walker: IWalker<string>): IdentifierToken {
