@@ -38,7 +38,7 @@ export class Lexer extends Walker<string> implements ILexer {
       'in ',
       'let ',
       'loop ',
-      'return',
+      'return ',
       'use ',
       'while ',
     ]),
