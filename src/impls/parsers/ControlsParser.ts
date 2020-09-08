@@ -41,38 +41,7 @@ export class ControlsParser extends Parser<Expression> {
       return this.parseIf(walker)
     }
 
-    if (peek.kind === 'while') {
-      return this.parseWhile(walker)
-    }
-
     return this.atom.parse(walker)
-  }
-
-  /**
-   * Parse while expression.
-   *
-   * @param walker Token walker.
-   */
-  protected parseWhile(walker: TokenWalker): WhileExpression {
-    const whileToken = walker.next()
-
-    if (!whileToken) {
-      throw this.createPeekError(walker)
-    }
-
-    if (whileToken.kind !== 'while') {
-      throw this.createUnexpectedError(whileToken, walker, 'while')
-    }
-
-    const condition = this.expressions.parse(walker)
-    const body = this.block.parse(walker)
-
-    return {
-      kind: 'while_expression',
-      condition,
-      body,
-      loc: whileToken.loc.merge(body.loc),
-    }
   }
 
   /**

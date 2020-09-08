@@ -146,6 +146,21 @@ export class StatementsParser extends Parser<Statement> {
       return this.block.parse(walker)
     }
 
+    if (peek.kind === 'while') {
+      const whileToken = peek
+      walker.next()
+
+      const condition = this.expressions.parse(walker)
+      const body = this.block.parse(walker)
+
+      return {
+        kind: 'while_statement',
+        condition,
+        body,
+        loc: whileToken.loc.merge(body.loc),
+      }
+    }
+
     const expression = this.expressions.parse(walker)
 
     return {
