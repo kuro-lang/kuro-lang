@@ -1,11 +1,6 @@
 import { Parser, Expression } from '../..'
 import { injectParser } from './parserContainer'
-import {
-  ParserToken,
-  IfExpression,
-  BlockStatement,
-  WhileExpression,
-} from '../../types'
+import { ParserToken, IfExpression, BlockStatement } from '../../types'
 import { IParser } from '../../interfaces'
 import { TokenWalker } from '../../classes'
 import { injectable } from 'inversify'

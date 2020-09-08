@@ -3,7 +3,6 @@ import {
   BinaryExpression,
   PrefixExpression,
   IfExpression,
-  WhileExpression,
   NumericLiteral,
   StringLiteral,
   BooleanLiteral,
@@ -26,4 +25,3 @@ export type Expression =
   | PrefixExpression
   | PropertyAccessExpression
   | StringLiteral
-  | WhileExpression
