@@ -11,6 +11,7 @@ import {
   PropertyAccessExpression,
   ObjectLiteral,
   ArrayLiteral,
+  ElementAccessExpression,
 } from './expressions'
 
 /**
@@ -21,6 +22,7 @@ export type Expression =
   | BinaryExpression
   | BooleanLiteral
   | CallExpression
+  | ElementAccessExpression
   | FunctionExpression
   | Identifier
   | IfExpression
