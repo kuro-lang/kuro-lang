@@ -14,7 +14,7 @@ export class KuroParser {
    */
   parse(source: SourceCode): Program {
     const lexer = new Lexer(source.code)
-    const walker = lexer.toTokenWalker(source)
+    const walker = lexer.toTokenWalker(source).setIndex(-1)
     const parser = parserContainer.get<IParser<Program>>(ParserToken.Program)
 
     const program = parser.parse(walker)
