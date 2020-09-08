@@ -91,19 +91,26 @@ export class CallAndAccessParser extends Parser<Expression> {
       throw this.createUnexpectedError(leftParen, walker, '(')
     }
 
-    let token = walker.peek()
+    let token = this.forwardToPrimaryToken(walker)
 
     if (token && token.kind === 'right_paren') {
       walker.next()
       return args
     }
 
-    do {
-      const arg = this.expressions.parse(walker)
-      args.push(arg)
+    loop(({ end }) => {
+      const expression = this.expressions.parse(walker)
 
-      token = walker.next()
-    } while (token && token.kind === 'comma')
+      args.push(expression)
+
+      token = this.forwardToPrimaryToken(walker)
+      if (!token || token.kind !== 'comma') {
+        return end()
+      }
+
+      walker.next()
+      this.forwardToPrimaryToken(walker)
+    })
 
     if (!token) {
       throw this.createPeekError(walker)
@@ -112,6 +119,8 @@ export class CallAndAccessParser extends Parser<Expression> {
     if (token.kind !== 'right_paren') {
       throw this.createUnexpectedError(token, walker, ')')
     }
+
+    walker.next()
 
     return args
   }
