@@ -5,7 +5,7 @@ import { StatementNodeBase } from '../../StatementNodeBase'
 /**
  * WhileStatement type.
  */
-export type WhileStatement = StatementNodeBase<'while_expression'> & {
+export type WhileStatement = StatementNodeBase<'while_statement'> & {
   /**
    * Condition expression.
    */
