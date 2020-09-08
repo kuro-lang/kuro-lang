@@ -7,10 +7,13 @@ import {
   Identifier,
   FunctionParameter,
   BlockStatement,
+  ObjectLiteral,
+  ObjectProperty,
 } from '../../types'
 import { injectable } from 'inversify'
 import { injectParser } from './parserContainer'
 import { IParser } from '../../interfaces'
+import { loop } from '../../utils'
 
 /**
  * AtomParser class.
@@ -50,7 +53,95 @@ export class AtomParser extends Parser<Expression> {
       return this.parseFunction(walker)
     }
 
+    if (token.kind === 'left_brace') {
+      return this.parseObjectLiteral(walker)
+    }
+
     throw this.createUnexpectedError(token, walker, 'expression')
+  }
+
+  /**
+   * Parse object litera.
+   *
+   * @param walker Token walker.
+   */
+  protected parseObjectLiteral(walker: TokenWalker): ObjectLiteral {
+    const properties: ObjectProperty[] = []
+    const leftBrace = walker.value()
+
+    if (!leftBrace) {
+      throw this.createPeekError(walker)
+    }
+
+    if (leftBrace.kind !== 'left_brace') {
+      throw this.createUnexpectedError(leftBrace, walker, '{')
+    }
+
+    let token = this.forwardToPrimaryToken(walker)
+
+    if (token && token.kind === 'right_brace') {
+      walker.next()
+
+      return {
+        kind: 'object_literal',
+        properties,
+        loc: leftBrace.loc.merge(token.loc),
+      }
+    }
+
+    loop(({ end }) => {
+      const identifierToken = walker.next()
+      if (!identifierToken) {
+        throw this.createPeekError(walker)
+      }
+
+      if (identifierToken.kind !== 'identifier') {
+        throw this.createUnexpectedError(identifierToken, walker, 'identifier')
+      }
+      const identifier: Identifier = {
+        ...identifierToken,
+      }
+
+      const colonToken = walker.next()
+      if (!colonToken) {
+        throw this.createPeekError(walker)
+      }
+
+      if (colonToken.kind !== 'colon') {
+        throw this.createUnexpectedError(colonToken, walker, ':')
+      }
+
+      const initializer = this.expressions.parse(walker)
+
+      properties.push({
+        identifier,
+        initializer,
+      })
+
+      token = this.forwardToPrimaryToken(walker)
+
+      if (!token || token.kind !== 'comma') {
+        return end()
+      }
+      walker.next()
+      this.forwardToPrimaryToken(walker)
+    })
+
+    if (!token) {
+      throw this.createPeekError(walker)
+    }
+
+    if (token.kind !== 'right_brace') {
+      throw this.createUnexpectedError(token, walker, '}')
+    }
+
+    walker.next()
+
+    return {
+      kind: 'object_literal',
+      properties,
+      loc: leftBrace.loc,
+    }
   }
 
   /**
