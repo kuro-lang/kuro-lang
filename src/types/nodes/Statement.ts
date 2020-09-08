@@ -7,6 +7,7 @@ import {
   ContinueStatement,
   BlockStatement,
   WhileStatement,
+  IncaseStatement,
 } from './statements'
 
 /**
@@ -18,6 +19,7 @@ export type Statement =
   | ConstStatement
   | ContinueStatement
   | ExpressionStatement
+  | IncaseStatement
   | LetStatement
   | ReturnStatement
   | WhileStatement
