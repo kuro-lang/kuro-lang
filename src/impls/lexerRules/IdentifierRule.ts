@@ -32,7 +32,20 @@ export class IdentifierRule implements ILexerRule {
   validate(walker: IWalker<string>): boolean {
     return (
       this.prefix.test(walker.value()) &&
-      this.ignore.every((s) => !walker.match(s))
+      this.ignore.some((s) => {
+        if (!walker.match(s)) {
+          return false
+        }
+
+        const sliced = walker.slice(
+          walker.index() + s.length,
+          walker.index() + s.length + 1
+        )
+
+        const nextChar = sliced.join()
+
+        return this.identifierChar.test(nextChar)
+      })
     )
   }
 
