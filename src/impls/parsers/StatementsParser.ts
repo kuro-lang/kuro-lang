@@ -1,7 +1,13 @@
 import { Parser, Expression } from '../..'
 import { injectable } from 'inversify'
 import { injectParser } from './parserContainer'
-import { ParserToken, Statement, Identifier, BlockStatement } from '../../types'
+import {
+  ParserToken,
+  Statement,
+  Identifier,
+  BlockStatement,
+  IncaseStatement,
+} from '../../types'
 import { IParser } from '../../interfaces'
 import { TokenWalker } from '../../classes'
 
@@ -161,12 +167,65 @@ export class StatementsParser extends Parser<Statement> {
       }
     }
 
+    if (peek.kind === 'incase') {
+      return this.parseIncase(walker)
+    }
+
     const expression = this.expressions.parse(walker)
 
     return {
       kind: 'expression_statement',
       expression,
       loc: expression.loc,
+    }
+  }
+
+  /**
+   * Parse incase statement.
+   *
+   * @param walker Token walker.
+   */
+  protected parseIncase(walker: TokenWalker): IncaseStatement {
+    const incaseToken = walker.next()
+
+    if (!incaseToken) {
+      throw this.createPeekError(walker)
+    }
+
+    if (incaseToken.kind !== 'incase') {
+      throw this.createUnexpectedError(incaseToken, walker, 'incase')
+    }
+
+    const condition = this.expressions.parse(walker)
+    const thenStatement = this.block.parse(walker)
+
+    let peek = walker.peek()
+
+    if (peek && peek.kind === 'else') {
+      walker.next()
+      peek = walker.peek()
+      let elseStatement: IncaseStatement['else']
+
+      if (peek && peek.kind === 'incase') {
+        elseStatement = this.parseIncase(walker)
+      } else {
+        elseStatement = this.block.parse(walker)
+      }
+
+      return {
+        kind: 'incase_statement',
+        condition,
+        then: thenStatement,
+        else: elseStatement,
+        loc: incaseToken.loc.merge(elseStatement.loc),
+      }
+    }
+
+    return {
+      kind: 'incase_statement',
+      condition,
+      then: thenStatement,
+      loc: incaseToken.loc.merge(thenStatement.loc),
     }
   }
 }
