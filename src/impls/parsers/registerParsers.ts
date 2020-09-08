@@ -18,6 +18,7 @@ import { GroupParser } from './GroupParser'
 import { AtomParser } from './AtomParser'
 import { ControlsParser } from './ControlsParser'
 import { BlockParser } from './BlockParser'
+import { PipeParser } from './PipeParser'
 
 /**
  * Register a parser by given key and given class.
@@ -36,6 +37,7 @@ registerParser('Program', ProgramParser)
 registerParser('Block', BlockParser)
 registerParser('Statements', StatementsParser)
 registerParser('Expressions', ExpressionsParser)
+registerParser('Pipe', PipeParser)
 registerParser('Assign', AssignParser)
 registerParser('Or', OrParser)
 registerParser('And', AndParser)
