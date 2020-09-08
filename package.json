@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Generic programming language and environment written in TypeScript.",
   "main": "lib/index.js",
+  "files": ["lib"],
   "repository": "https://github.com/quro-framework/kuro-lang",
   "author": "hota1024",
   "license": "MIT",
