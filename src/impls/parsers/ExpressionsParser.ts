@@ -13,7 +13,7 @@ export class ExpressionsParser extends Parser<Expression> {
   /**
    * Expression root parser.
    */
-  @injectParser(ParserToken.Assign) expressionRoot: IParser<Expression>
+  @injectParser(ParserToken.Pipe) expressionRoot: IParser<Expression>
 
   parse(walker: TokenWalker): Expression {
     return this.expressionRoot.parse(walker)
