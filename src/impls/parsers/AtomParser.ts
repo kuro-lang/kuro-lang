@@ -9,6 +9,7 @@ import {
   BlockStatement,
   ObjectLiteral,
   ObjectProperty,
+  ArrayLiteral,
 } from '../../types'
 import { injectable } from 'inversify'
 import { injectParser } from './parserContainer'
@@ -57,7 +58,65 @@ export class AtomParser extends Parser<Expression> {
       return this.parseObjectLiteral(walker)
     }
 
+    if (token.kind === 'left_bracket') {
+      return this.parseArrayLiteral(walker)
+    }
+
     throw this.createUnexpectedError(token, walker, 'expression')
+  }
+
+  protected parseArrayLiteral(walker: TokenWalker): ArrayLiteral {
+    const elements: Expression[] = []
+    const leftBracket = walker.value()
+
+    if (!leftBracket) {
+      throw this.createPeekError(walker)
+    }
+
+    if (leftBracket.kind !== 'left_bracket') {
+      throw this.createUnexpectedError(leftBracket, walker, '[')
+    }
+
+    let token = this.forwardToPrimaryToken(walker)
+
+    if (token && token.kind === 'right_bracket') {
+      walker.next()
+
+      return {
+        kind: 'array_literal',
+        elements,
+        loc: leftBracket.loc.merge(token.loc),
+      }
+    }
+
+    loop(({ end }) => {
+      const expression = this.expressions.parse(walker)
+      elements.push(expression)
+
+      token = this.forwardToPrimaryToken(walker)
+
+      if (token && token.kind !== 'comma') {
+        return end()
+      }
+      walker.next()
+      this.forwardToPrimaryToken(walker)
+    })
+
+    if (!token) {
+      throw this.createPeekError(walker)
+    }
+
+    if (token.kind !== 'right_bracket') {
+      throw this.createUnexpectedError(token, walker, ']')
+    }
+
+    walker.next()
+
+    return {
+      kind: 'array_literal',
+      elements,
+      loc: leftBracket.loc.merge(token.loc),
+    }
   }
 
   /**
