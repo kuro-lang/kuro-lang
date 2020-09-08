@@ -6,6 +6,7 @@ import {
   BreakStatement,
   ContinueStatement,
   BlockStatement,
+  WhileStatement,
 } from './statements'
 
 /**
@@ -19,3 +20,4 @@ export type Statement =
   | ExpressionStatement
   | LetStatement
   | ReturnStatement
+  | WhileStatement
