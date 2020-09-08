@@ -10,12 +10,14 @@ import {
   CallExpression,
   PropertyAccessExpression,
   ObjectLiteral,
+  ArrayLiteral,
 } from './expressions'
 
 /**
  * Expression type.
  */
 export type Expression =
+  | ArrayLiteral
   | BinaryExpression
   | BooleanLiteral
   | CallExpression
