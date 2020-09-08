@@ -1,11 +1,6 @@
-import { ExpressionNodeBase, Expression } from '../..'
+import { ExpressionNodeBase } from '../..'
 
 /**
  * BreakStatement type.
  */
-export type BreakStatement = ExpressionNodeBase<'break_statement'> & {
-  /**
-   * Expression.
-   */
-  expression?: Expression
-}
+export type BreakStatement = ExpressionNodeBase<'break_statement'>

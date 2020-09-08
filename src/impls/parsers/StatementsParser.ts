@@ -29,26 +29,9 @@ export class StatementsParser extends Parser<Statement> {
 
     if (peek.kind === 'break') {
       walker.next()
-      const breakPeek = walker.peek()
-
-      if (
-        !breakPeek ||
-        breakPeek.kind === 'semi_colon' ||
-        breakPeek.kind === 'new_line'
-      ) {
-        return {
-          kind: 'break_statement',
-          loc: peek.loc,
-        }
-      }
-
-      const expression = this.expressions.parse(walker)
-      this.forwardToPrimaryToken(walker)
-
       return {
         kind: 'break_statement',
-        expression,
-        loc: peek.loc.merge(expression.loc),
+        loc: peek.loc,
       }
     }
 
