@@ -12,6 +12,7 @@ import {
   WhileToken,
   UseToken,
   ReturnToken,
+  IncaseToken,
 } from './reserveds'
 
 /*
@@ -25,6 +26,7 @@ export type ReservedToken =
   | FnToken
   | ForToken
   | IfToken
+  | IncaseToken
   | InToken
   | LetToken
   | LoopToken
