@@ -9,6 +9,7 @@ import {
   FunctionExpression,
   CallExpression,
   PropertyAccessExpression,
+  ObjectLiteral,
 } from './expressions'
 
 /**
@@ -22,6 +23,7 @@ export type Expression =
   | Identifier
   | IfExpression
   | NumericLiteral
+  | ObjectLiteral
   | PrefixExpression
   | PropertyAccessExpression
   | StringLiteral
