@@ -9,7 +9,7 @@ import { IParser } from '../../interfaces'
  */
 @injectable()
 export class PipeParser extends BinaryExpressionParser {
-  @injectParser(ParserToken.AddAndSub) subParser: IParser<Expression>
+  @injectParser(ParserToken.Assign) subParser: IParser<Expression>
 
   kinds: PureTokenKind[] = ['minus_greater_than']
 }
