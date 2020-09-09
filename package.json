@@ -1,6 +1,6 @@
 {
   "name": "kuro-lang",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Generic programming language and environment written in TypeScript.",
   "main": "lib/index.js",
   "files": [
