@@ -271,8 +271,13 @@ export class JsTranspiler implements ITranspiler {
     }
 
     if (expression.kind === 'prefix_expression') {
-      const operator = this.tokenToSymbol(expression.operator)
       const right = this.expression(expression.right)
+
+      if (expression.operator.kind === 'await') {
+        return `await ${right}`
+      }
+
+      const operator = this.tokenToSymbol(expression.operator)
 
       return `${operator}${right}`
     }
