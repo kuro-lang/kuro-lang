@@ -143,6 +143,14 @@ export const ParserToken = {
   CallAndAccess: Symbol('CallAndAccess'),
 
   /**
+   * AwaitParser token.
+   *
+   * Parse
+   * - `await <expression>`
+   */
+  Await: Symbol('Await'),
+
+  /**
    * GroupParser token.
    *
    * Parse
