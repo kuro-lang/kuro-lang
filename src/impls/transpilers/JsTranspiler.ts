@@ -200,13 +200,14 @@ export class JsTranspiler implements ITranspiler {
         .map((param) => this.expression(param.identifier))
         .join(`,${this.space}`)
       const body = this.statement(expression.body, 'return ')
+      const asyncPart = expression.async ? 'async' : ''
 
       if (expression.identifier) {
         const identifier = this.expression(expression.identifier)
-        return `function ${identifier}(${params})${this.space}${body}`
+        return `${asyncPart} function ${identifier}(${params})${this.space}${body}`
       }
 
-      return `function (${params})${this.space}${body}`
+      return `${asyncPart} function (${params})${this.space}${body}`
     }
 
     if (expression.kind === 'identifier') {
