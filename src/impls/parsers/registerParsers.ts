@@ -19,6 +19,7 @@ import { AtomParser } from './AtomParser'
 import { ControlsParser } from './ControlsParser'
 import { BlockParser } from './BlockParser'
 import { PipeParser } from './PipeParser'
+import { AwaitParser } from './AwaitParser'
 
 /**
  * Register a parser by given key and given class.
@@ -48,6 +49,7 @@ registerParser('MulAndDivAndSurplus', MulAndDivAndSurplusParser)
 registerParser('Power', PowerParser)
 registerParser('Prefix', PrefixParser)
 registerParser('CallAndAccess', CallAndAccessParser)
+registerParser('Await', AwaitParser)
 registerParser('Group', GroupParser)
 registerParser('Controls', ControlsParser)
 registerParser('Atom', AtomParser)

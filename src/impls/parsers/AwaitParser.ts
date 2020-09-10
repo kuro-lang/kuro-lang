@@ -6,16 +6,16 @@ import { IParser } from '../../interfaces'
 import { TokenWalker } from '../../classes'
 
 /**
- * PrefixParser class.
+ * AwaitParser class.
  */
 @injectable()
-export class PrefixParser extends Parser<Expression> {
+export class AwaitParser extends Parser<Expression> {
   /**
-   * CallParser.
+   * GroupParser.
    */
-  @injectParser(ParserToken.CallAndAccess) call: IParser<Expression>
+  @injectParser(ParserToken.Group) group: IParser<Expression>
 
-  readonly prefixes: TokenKind[] = ['plus', 'minus', 'exclamation']
+  readonly prefixes: TokenKind[] = ['await']
 
   parse(walker: TokenWalker): Expression {
     const peek = walker.peek()
@@ -25,11 +25,11 @@ export class PrefixParser extends Parser<Expression> {
     }
 
     if (!this.isPrefixToken(peek)) {
-      return this.call.parse(walker)
+      return this.group.parse(walker)
     }
 
     walker.next()
-    const expression = this.call.parse(walker)
+    const expression = this.group.parse(walker)
 
     return {
       kind: 'prefix_expression',

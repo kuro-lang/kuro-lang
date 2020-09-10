@@ -12,9 +12,9 @@ import { Parser } from '../../abstracts'
 @injectable()
 export class CallAndAccessParser extends Parser<Expression> {
   /**
-   * GroupParser.
+   * AwaitParser.
    */
-  @injectParser(ParserToken.Group) group: IParser<Expression>
+  @injectParser(ParserToken.Await) awaitParser: IParser<Expression>
 
   /**
    * ExpressionsParser.
@@ -22,7 +22,7 @@ export class CallAndAccessParser extends Parser<Expression> {
   @injectParser(ParserToken.Expressions) expressions: IParser<Expression>
 
   parse(walker: TokenWalker): Expression {
-    let expression = this.group.parse(walker)
+    let expression = this.awaitParser.parse(walker)
 
     return loop(({ end }) => {
       const peek = walker.peek()
