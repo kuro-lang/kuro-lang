@@ -50,6 +50,15 @@ export class AtomParser extends Parser<Expression> {
       return token
     }
 
+    if (token.kind === 'async') {
+      walker.next()
+      const func = this.parseFunction(walker)
+
+      func.async = token
+
+      return func
+    }
+
     if (token.kind === 'fn') {
       return this.parseFunction(walker)
     }
