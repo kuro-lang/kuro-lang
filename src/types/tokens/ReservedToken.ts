@@ -14,6 +14,7 @@ import {
   ReturnToken,
   IncaseToken,
   AsyncToken,
+  AwaitToken,
 } from './reserveds'
 
 /*
@@ -21,6 +22,7 @@ import {
  */
 export type ReservedToken =
   | AsyncToken
+  | AwaitToken
   | BreakToken
   | ConstToken
   | ContinueToken
