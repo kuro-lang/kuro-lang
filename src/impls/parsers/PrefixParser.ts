@@ -15,7 +15,7 @@ export class PrefixParser extends Parser<Expression> {
    */
   @injectParser(ParserToken.CallAndAccess) call: IParser<Expression>
 
-  readonly prefixes: TokenKind[] = ['plus', 'minus', 'exclamation']
+  readonly prefixes: TokenKind[] = ['plus', 'minus', 'exclamation', 'await']
 
   parse(walker: TokenWalker): Expression {
     const peek = walker.peek()
