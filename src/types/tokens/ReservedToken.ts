@@ -13,12 +13,14 @@ import {
   UseToken,
   ReturnToken,
   IncaseToken,
+  AsyncToken,
 } from './reserveds'
 
 /*
  * ReservedToken type.
  */
 export type ReservedToken =
+  | AsyncToken
   | BreakToken
   | ConstToken
   | ContinueToken
