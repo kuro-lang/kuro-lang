@@ -27,6 +27,7 @@ export class Lexer extends Walker<string> implements ILexer {
     new NumericLiteralRule(),
     new StringLiteralRule(),
     new IdentifierRule([
+      'async',
       'break',
       'const',
       'continue',
@@ -49,6 +50,7 @@ export class Lexer extends Walker<string> implements ILexer {
       make('**=', 'asterisk_asterisk_equals'),
       make('*=', 'asterisk_equals'),
       make('||', 'bar_bar'),
+      make('async', 'async'),
       make('break', 'break'),
       make(':', 'colon'),
       make(';', 'comma'),
