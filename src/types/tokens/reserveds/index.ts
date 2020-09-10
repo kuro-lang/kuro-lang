@@ -1,4 +1,5 @@
 export * from './AsyncToken'
+export * from './AwaitToken'
 export * from './BreakToken'
 export * from './ConstToken'
 export * from './ContinueToken'
