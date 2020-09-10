@@ -72,7 +72,7 @@ export class JsTranspiler implements ITranspiler {
         ) {
           body += lastExpressionSuffix + this.statement(subStatement)
         } else {
-          body += this.statement(subStatement)
+          body += this.statement(subStatement, lastExpressionSuffix)
         }
         body += this.statementSuffix
       }
@@ -127,7 +127,7 @@ export class JsTranspiler implements ITranspiler {
 
     if (statement.kind === 'incase_statement') {
       const condition = this.expression(statement.condition)
-      const thenStatement = this.statement(statement.then, `return `)
+      const thenStatement = this.statement(statement.then, lastExpressionSuffix)
       let elseStatement = ''
 
       if (statement.else) {
@@ -145,7 +145,7 @@ export class JsTranspiler implements ITranspiler {
             )
             elseNode = elseNode.else
           } else {
-            const body = this.statement(elseNode, 'return ')
+            const body = this.statement(elseNode, lastExpressionSuffix)
 
             elseStatement += `else ${body}`
 
