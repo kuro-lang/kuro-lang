@@ -139,7 +139,11 @@ export class Lexer extends Walker<string> implements ILexer {
     const tokens: Token[] = []
 
     for (const token of this) {
-      if (typeof token !== 'string') {
+      if (
+        typeof token !== 'string' &&
+        token.kind !== 'block_comment' &&
+        token.kind !== 'inline_comment'
+      ) {
         tokens.push(token)
       }
     }
