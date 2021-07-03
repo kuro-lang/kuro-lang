@@ -43,7 +43,7 @@ fn suffix(suffix, value) {
 const yen = suffix("yen") // create yen function that returns join given value and "yen".
 const tax10 = tax(10)     // create tax10 function that returns amount of the 10% sales tax applied.
 
-1000 -> tax10 -> yen -> println // 1100
+1000 -> tax10 -> yen -> println // 1100yen
 ```
 
 ### Browser & Fetch API
